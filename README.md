@@ -64,6 +64,6 @@ Nginx | 负载均衡  | [http://nginx.org/](http://nginx.org/)
 
 #### QQ群
 
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=99c42a4588c5a2b014532eece12401a69e83961da32b6ce24d333a5fe486250b"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Java全栈开发学习交流" title="Java全栈开发学习交流"></a>
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=99c42a4588c5a2b014532eece12401a69e83961da32b6ce24d333a5fe486250b">点击加群</a>
 
-<img src="docs/image/skill-qq.png" width=30%>
+<img src="docs/images/skill-qq.png" width=30%>
