@@ -6,7 +6,7 @@
 
 ### 1、架构设计
 
-<img src="docs/架构设计/skill6架构图.jpg" width=30%>
+![image](https://github.com/skill6/skill6-parent/blob/master/docs/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/skill6%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
 
 ------------
 
