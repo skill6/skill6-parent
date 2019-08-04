@@ -10,9 +10,9 @@ import cn.skill6.common.utility.ReflectEnity;
  * @since 2018年9月22日 下午11:37:03
  */
 public interface BaseTemplate {
-  boolean judgeFieldIsExist(String aimFieldName);
+    boolean judgeFieldIsExist(String aimFieldName);
 
-  default boolean judgeFieldIsExist(Class<?> clazz, String aimFieldName) {
-    return ReflectEnity.judgeFieldIsExist(clazz, aimFieldName);
-  }
+    default boolean judgeFieldIsExist(Class<?> clazz, String aimFieldName) {
+        return ReflectEnity.judgeFieldIsExist(clazz, aimFieldName);
+    }
 }

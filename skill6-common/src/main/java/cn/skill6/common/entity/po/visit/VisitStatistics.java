@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.visit;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 访问统计实体类
@@ -18,13 +18,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VisitStatistics {
 
-  private Long statisticsId;
+    private Long statisticsId;
 
-  private Date statisticsDate;
+    private Date statisticsDate;
 
-  private Integer statisticsOnlineMax;
+    private Integer statisticsOnlineMax;
 
-  private Integer statisticsCurrentDay;
+    private Integer statisticsCurrentDay;
 
-  private Integer statisticsTotalCount;
+    private Integer statisticsTotalCount;
 }

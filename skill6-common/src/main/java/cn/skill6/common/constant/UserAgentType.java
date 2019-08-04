@@ -10,12 +10,13 @@ import lombok.Getter;
  * @since 2018年12月30日 下午11:32:34
  */
 public enum UserAgentType {
-  PC("pc"),
-  MOBILE("mobile");
+    PC("pc"),
+    MOBILE("mobile");
 
-  @Getter private String userAgent;
+    @Getter
+    private String userAgent;
 
-  private UserAgentType(String userAgent) {
-    this.userAgent = userAgent;
-  }
+    private UserAgentType(String userAgent) {
+        this.userAgent = userAgent;
+    }
 }

@@ -1,9 +1,9 @@
 package cn.skill6.common.entity.po.store;
 
-import java.util.Date;
-
 import cn.skill6.common.entity.enums.FileType;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * 文件下载实体类
@@ -15,52 +15,53 @@ import lombok.Data;
 @Data
 public class StoreFile {
 
-  private Long fileId;
+    private Long fileId;
 
-  private String fileName;
+    private String fileName;
 
-  private String fileUrl;
+    private String fileUrl;
 
-  private Date fileUploadTime;
+    private Date fileUploadTime;
 
-  private FileType fileType;
+    private FileType fileType;
 
-  private String fileHashCode;
+    private String fileHashCode;
 
-  private Integer fileDownloadCount;
+    private Integer fileDownloadCount;
 
-  public StoreFile() {}
+    public StoreFile() {
+    }
 
-  public StoreFile(
-      Long fileId,
-      String fileName,
-      String fileUrl,
-      Date fileUploadTime,
-      String fileHashCode,
-      Integer fileDownloadCount) {
-    this.fileId = fileId;
-    this.fileName = fileName;
-    this.fileUrl = fileUrl;
-    this.fileUploadTime = fileUploadTime;
-    this.fileHashCode = fileHashCode;
-    this.fileDownloadCount = fileDownloadCount;
-  }
+    public StoreFile(
+            Long fileId,
+            String fileName,
+            String fileUrl,
+            Date fileUploadTime,
+            String fileHashCode,
+            Integer fileDownloadCount) {
+        this.fileId = fileId;
+        this.fileName = fileName;
+        this.fileUrl = fileUrl;
+        this.fileUploadTime = fileUploadTime;
+        this.fileHashCode = fileHashCode;
+        this.fileDownloadCount = fileDownloadCount;
+    }
 
-  public StoreFile(
-      Long fileId,
-      String fileName,
-      String fileUrl,
-      Date fileUploadTime,
-      FileType fileType,
-      String fileHashCode,
-      Integer fileDownloadCount) {
-    super();
-    this.fileId = fileId;
-    this.fileName = fileName;
-    this.fileUrl = fileUrl;
-    this.fileUploadTime = fileUploadTime;
-    this.fileType = fileType;
-    this.fileHashCode = fileHashCode;
-    this.fileDownloadCount = fileDownloadCount;
-  }
+    public StoreFile(
+            Long fileId,
+            String fileName,
+            String fileUrl,
+            Date fileUploadTime,
+            FileType fileType,
+            String fileHashCode,
+            Integer fileDownloadCount) {
+        super();
+        this.fileId = fileId;
+        this.fileName = fileName;
+        this.fileUrl = fileUrl;
+        this.fileUploadTime = fileUploadTime;
+        this.fileType = fileType;
+        this.fileHashCode = fileHashCode;
+        this.fileDownloadCount = fileDownloadCount;
+    }
 }

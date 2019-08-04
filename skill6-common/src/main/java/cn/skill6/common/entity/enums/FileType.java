@@ -10,30 +10,32 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * @since 2018年9月4日 下午11:36:18
  */
 public enum FileType implements BaseEnum<Enum<FileType>, String> {
-  ATTACHMENT("attachment", "附件文件"),
-  SHARE_FILES("share_files", "分享提供下载");
+    ATTACHMENT("attachment", "附件文件"),
+    SHARE_FILES("share_files", "分享提供下载");
 
-  /** 长度不超过16 */
-  private String stateCode;
+    /**
+     * 长度不超过16
+     */
+    private String stateCode;
 
-  private String description;
+    private String description;
 
-  /**
-   * @param stateCode
-   * @param description
-   */
-  private FileType(String stateCode, String description) {
-    this.stateCode = stateCode;
-    this.description = description;
-  }
+    /**
+     * @param stateCode
+     * @param description
+     */
+    private FileType(String stateCode, String description) {
+        this.stateCode = stateCode;
+        this.description = description;
+    }
 
-  @Override
-  public String getStateCode() {
-    return stateCode;
-  }
+    @Override
+    public String getStateCode() {
+        return stateCode;
+    }
 
-  @Override
-  public String getDescrition() {
-    return description;
-  }
+    @Override
+    public String getDescrition() {
+        return description;
+    }
 }

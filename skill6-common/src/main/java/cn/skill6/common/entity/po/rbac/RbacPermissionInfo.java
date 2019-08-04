@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.rbac;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * RBAC权限信息
@@ -18,21 +18,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RbacPermissionInfo {
 
-  private Long permissionId;
+    private Long permissionId;
 
-  private String permissionName;
+    private String permissionName;
 
-  private String permissionCode;
+    private String permissionCode;
 
-  private String permissionDesc;
+    private String permissionDesc;
 
-  private Boolean permissionNavi;
+    private Boolean permissionNavi;
 
-  private String permissionUrl;
+    private String permissionUrl;
 
-  private Date permissionCreateTime;
+    private Date permissionCreateTime;
 
-  private Date permissionUpdateTime;
+    private Date permissionUpdateTime;
 
-  private Boolean permissionValid;
+    private Boolean permissionValid;
 }

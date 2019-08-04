@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.rbac;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * RBAC角色信息
@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RbacRoleInfo {
 
-  private Long roleId;
+    private Long roleId;
 
-  private String roleName;
+    private String roleName;
 
-  private String roleCode;
+    private String roleCode;
 
-  private String roleDesc;
+    private String roleDesc;
 
-  private Date roleCreateTime;
+    private Date roleCreateTime;
 
-  private Date roleUpdateTime;
+    private Date roleUpdateTime;
 
-  private Boolean roleValid;
+    private Boolean roleValid;
 }

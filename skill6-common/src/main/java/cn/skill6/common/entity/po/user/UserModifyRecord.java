@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.user;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 用户信息修改记录实体类
@@ -18,15 +18,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserModifyRecord {
 
-  private Long userId;
+    private Long userId;
 
-  private String userModifyType;
+    private String userModifyType;
 
-  private Date userModifyTime;
+    private Date userModifyTime;
 
-  private String userModifyBefore;
+    private String userModifyBefore;
 
-  private String userModifyAfter;
+    private String userModifyAfter;
 
-  private Boolean userModufyResult;
+    private Boolean userModufyResult;
 }

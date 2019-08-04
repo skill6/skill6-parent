@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RbacUserRoleRel {
 
-  private Long userId;
+    private Long userId;
 
-  private Long roleId;
+    private Long roleId;
 }

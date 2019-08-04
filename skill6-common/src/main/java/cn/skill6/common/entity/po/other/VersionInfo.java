@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.other;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 网站版本信息实体类
@@ -18,13 +18,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VersionInfo {
 
-  private Long versionId;
+    private Long versionId;
 
-  private Long userId;
+    private Long userId;
 
-  private String versionNumber;
+    private String versionNumber;
 
-  private Date versionReleaseTime;
+    private Date versionReleaseTime;
 
-  private String versionContent;
+    private String versionContent;
 }

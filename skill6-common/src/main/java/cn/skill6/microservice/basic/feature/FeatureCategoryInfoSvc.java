@@ -11,20 +11,20 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * @since 2018年10月5日 下午4:10:03
  */
 public interface FeatureCategoryInfoSvc {
-  /**
-   * 增加目录信息
-   *
-   * @param featureCategoryInfo
-   * @param categoryType
-   * @return 操作结果
-   */
-  public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo, int categoryType);
+    /**
+     * 增加目录信息
+     *
+     * @param featureCategoryInfo
+     * @param categoryType
+     * @return 操作结果
+     */
+    public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo, int categoryType);
 
-  /**
-   * 增加目录信息
-   *
-   * @param featureCategoryInfo
-   * @return
-   */
-  ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo);
+    /**
+     * 增加目录信息
+     *
+     * @param featureCategoryInfo
+     * @return 操作结果
+     */
+    ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo);
 }

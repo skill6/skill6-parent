@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.article;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 文章评论实体类
@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticleComment {
 
-  private Long commentId;
+    private Long commentId;
 
-  private Long articleId;
+    private Long articleId;
 
-  private Long userId;
+    private Long userId;
 
-  private Long commentParentId;
+    private Long commentParentId;
 
-  private Date commentTime;
+    private Date commentTime;
 
-  private Boolean commentValid;
+    private Boolean commentValid;
 
-  private String commentContent;
+    private String commentContent;
 }

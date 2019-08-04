@@ -1,14 +1,10 @@
 package cn.skill6.common.sequence;
 
-import java.sql.Timestamp;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import java.sql.Timestamp;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 高并发场景下System.currentTimeMillis()的性能问题的优化
@@ -33,48 +29,48 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
  */
 public class SystemClock {
 
-  private final AtomicLong now;
+    private final AtomicLong now;
 
-  private SystemClock(long period) {
-    this.now = new AtomicLong(System.currentTimeMillis());
-    scheduleClockUpdating();
-  }
+    private SystemClock(long period) {
+        this.now = new AtomicLong(System.currentTimeMillis());
+        scheduleClockUpdating();
+    }
 
-  private static class InstanceHolder {
-    public static final SystemClock INSTANCE = new SystemClock(1);
-  }
+    private static class InstanceHolder {
+        public static final SystemClock INSTANCE = new SystemClock(1);
+    }
 
-  private static SystemClock instance() {
-    return InstanceHolder.INSTANCE;
-  }
+    private static SystemClock instance() {
+        return InstanceHolder.INSTANCE;
+    }
 
-  private void scheduleClockUpdating() {
-    ThreadFactory namedThreadFactory =
-        new ThreadFactoryBuilder().setNameFormat("system-clock-%d").build();
-    // Common Thread Pool
-    ExecutorService pool =
-        new ThreadPoolExecutor(
-            5,
-            200,
-            0L,
-            TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<Runnable>(1024),
-            namedThreadFactory,
-            new ThreadPoolExecutor.AbortPolicy());
-    pool.execute(() -> now.set(System.currentTimeMillis()));
-    // gracefully shutdown
-    pool.shutdown();
-  }
+    private void scheduleClockUpdating() {
+        ThreadFactory namedThreadFactory =
+                new ThreadFactoryBuilder().setNameFormat("system-clock-%d").build();
+        // Common Thread Pool
+        ExecutorService pool =
+                new ThreadPoolExecutor(
+                        5,
+                        200,
+                        0L,
+                        TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>(1024),
+                        namedThreadFactory,
+                        new ThreadPoolExecutor.AbortPolicy());
+        pool.execute(() -> now.set(System.currentTimeMillis()));
+        // gracefully shutdown
+        pool.shutdown();
+    }
 
-  private long currentTimeMillis() {
-    return now.get();
-  }
+    private long currentTimeMillis() {
+        return now.get();
+    }
 
-  public static long now() {
-    return instance().currentTimeMillis();
-  }
+    public static long now() {
+        return instance().currentTimeMillis();
+    }
 
-  public static String nowDate() {
-    return new Timestamp(instance().currentTimeMillis()).toString();
-  }
+    public static String nowDate() {
+        return new Timestamp(instance().currentTimeMillis()).toString();
+    }
 }

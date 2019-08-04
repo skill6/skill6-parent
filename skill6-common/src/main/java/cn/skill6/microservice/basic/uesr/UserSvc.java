@@ -11,11 +11,11 @@ import cn.skill6.common.entity.po.user.UserPrivacyInfo;
  */
 public interface UserSvc {
 
-  /**
-   * 快速创建用户
-   *
-   * @param userPrivacyInfoSvc
-   * @return 用户id
-   */
-  Long quickCreateUser(UserPrivacyInfo userPrivacyInfo);
+    /**
+     * 快速创建用户
+     *
+     * @param userPrivacyInfo 用户信息
+     * @return 用户id
+     */
+    Long quickCreateUser(UserPrivacyInfo userPrivacyInfo);
 }

@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FileAttribute {
 
-  String id;
-  String name;
-  String suffix;
-  String url;
-  String hashCode;
+    String id;
+    String name;
+    String suffix;
+    String url;
+    String hashCode;
 }

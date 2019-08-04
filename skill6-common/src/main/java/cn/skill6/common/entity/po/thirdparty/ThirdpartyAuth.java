@@ -1,12 +1,12 @@
 package cn.skill6.common.entity.po.thirdparty;
 
-import java.util.Date;
-
 import cn.skill6.common.entity.po.abst.PaginationAndSort;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 第三方授权实体类
@@ -21,15 +21,15 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class ThirdpartyAuth extends PaginationAndSort {
 
-  private Long thirdpartyId;
+    private Long thirdpartyId;
 
-  private Long userId;
+    private Long userId;
 
-  private String thirdpartyPrimaryKey;
+    private String thirdpartyPrimaryKey;
 
-  private Boolean thirdpartyValid;
+    private Boolean thirdpartyValid;
 
-  private Date thirdpartyCreateTime;
+    private Date thirdpartyCreateTime;
 
-  private String thirdpartyData;
+    private String thirdpartyData;
 }
