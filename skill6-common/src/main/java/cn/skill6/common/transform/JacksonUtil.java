@@ -1,11 +1,13 @@
 package cn.skill6.common.transform;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.Map;
@@ -20,10 +22,25 @@ import java.util.Map;
 @Slf4j
 public class JacksonUtil {
     // 驼峰和下划线格式自动转换
-    private static final ObjectMapper objectMapper =
-            new ObjectMapper()
-                    .setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE)
-                    .setDefaultPropertyInclusion(Include.NON_NULL);
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
+    static {
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SnakeCaseStrategy.SNAKE_CASE)
+                .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
+
+        // 如果json中有新增的字段并且是实体类类中不存在的，不报错
+        objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+        // 如果存在未知属性，则忽略不报错
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        // 允许key没有双引号
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+        // 允许key有单引号
+        objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+        // 允许整数以0开头
+        objectMapper.configure(JsonParser.Feature.ALLOW_NUMERIC_LEADING_ZEROS, true);
+        // 允许字符串中存在回车换行控制符
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+    }
 
     public static ObjectMapper getInstance() {
         return objectMapper;
@@ -34,50 +51,48 @@ public class JacksonUtil {
             return objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             log.error("object to json error", e);
+            throw new IllegalArgumentException("object to json error");
         }
-
-        return StringUtils.EMPTY;
     }
 
-    /**
-     * entity包含实体类、Map、List等
-     *
-     * @param map
-     * @param clazz
-     * @throws IOException
-     */
-    public static <T> T map2Entity(Map<String, String> map, Class<T> clazz) throws IOException {
+    public static <T> T toObj(String jsonStr, Class<T> clazz) {
+        try {
+            return (T) objectMapper.readValue(jsonStr, clazz);
+        } catch (IOException e) {
+            log.error("json to object error", e);
+            throw new IllegalArgumentException("json to object error");
+        }
+    }
+
+    public static <T> T toObj(String jsonStr, TypeReference<?> typeReference) {
+        try {
+            return objectMapper.readValue(jsonStr, typeReference);
+        } catch (IOException e) {
+            log.error("json to object error", e);
+            throw new IllegalArgumentException("json to object error");
+        }
+    }
+
+    public static <T> T str2Map(String jsonStr) {
+        return toObj(jsonStr, new TypeReference<Map<String, String>>() {
+        });
+    }
+
+    public static <T> T map2Obj(Map<String, String> map, Class<T> clazz) {
         return (T) objectMapper.convertValue(map, clazz);
     }
 
-    @SuppressWarnings("unchecked")
-    public static <T, E> Map<String, T> entity2Map(E entity) throws IOException {
-        return entity2Entity(entity, Map.class);
+    public static <T> T toObj(Object jsonStr, TypeReference<?> typeReference) {
+        return objectMapper.convertValue(jsonStr, typeReference);
     }
 
-    /**
-     * entity包含实体类、Map、List等
-     *
-     * @param entity
-     * @param clazz
-     * @throws IOException
-     */
-    public static <T, E> T entity2Entity(E entity, Class<T> clazz) throws IOException {
-        return (T) objectMapper.convertValue(entity, clazz);
+    public static <T> T obj2Map(Object object) {
+        return toObj(object, new TypeReference<Map<String, String>>() {
+        });
     }
 
-    /**
-     * entity包含实体类、Map、List等
-     *
-     * @param jsonStr json字符串
-     * @param clazz   目标类型
-     * @throws IOException
-     */
-    public static <T, E> T fromStr(String jsonStr, Class<T> clazz) throws IOException {
-        return (T) objectMapper.readValue(jsonStr, clazz);
+    public static <T> T obj2Obj(Object object, Class<T> clazz) {
+        return (T) objectMapper.convertValue(object, clazz);
     }
 
-    public static <T> Map<String, T> str2Map(String jsonStr) throws IOException {
-        return fromStr(jsonStr, Map.class);
-    }
 }
