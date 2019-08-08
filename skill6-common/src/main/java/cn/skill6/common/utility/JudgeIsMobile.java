@@ -169,7 +169,7 @@ public class JudgeIsMobile {
         }
 
         for (String mobileAgent : mobileAgents) {
-            if (userAgent.toLowerCase().indexOf(mobileAgent) >= 0) {
+            if (userAgent.toLowerCase().contains(mobileAgent)) {
                 return true;
             }
         }

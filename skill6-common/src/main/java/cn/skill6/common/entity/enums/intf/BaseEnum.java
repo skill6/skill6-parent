@@ -7,16 +7,11 @@ package cn.skill6.common.entity.enums.intf;
  * @version 1.2
  * @since 2018年4月27日 下午2:59:35
  */
-public interface BaseEnum<E extends Enum<?>, T> {
-    /**
-     * 与枚举名称相同的小写字母
-     *
-     * @return 状态码
-     */
-    T getStateCode();
+public interface BaseEnum<E extends Enum<?>> {
 
     /**
-     * @return 枚举的描述
+     * @return 与枚举名称相同的小写字母
      */
-    String getDescrition();
+    String getEnumName();
+
 }

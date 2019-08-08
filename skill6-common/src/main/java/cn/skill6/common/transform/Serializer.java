@@ -1,8 +1,8 @@
 package cn.skill6.common.transform;
 
-import cn.skill6.common.BaseUtils;
-import cn.skill6.common.exception.tools.StackTrace2Str;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ import java.util.Set;
  * @since 2018年4月1日 下午10:07:26
  */
 @Slf4j
-public class Serializer extends BaseUtils {
+public class Serializer {
 
     /**
      * 序列化对象
      *
-     * @param object
+     * @param object 对象
      * @return 字节数组
      */
     public static byte[] serialize(Object object) {
@@ -48,13 +48,10 @@ public class Serializer extends BaseUtils {
             objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(object);
             objectOutputStream.flush();
-            byte[] byteArray = byteArrayOutputStream.toByteArray();
 
-            log.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
-
-            return byteArray;
+            return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
+            log.error("serialize failed", e);
         }
 
         return null;
@@ -63,11 +60,11 @@ public class Serializer extends BaseUtils {
     /**
      * 反序列化成对象
      *
-     * @param byteArray
+     * @param byteArray 字节数组
      * @return 对象
      */
     public static Object unserialize(byte[] byteArray) {
-        if (isEmpty(byteArray)) {
+        if (ArrayUtils.isEmpty(byteArray)) {
             return null;
         }
 
@@ -79,11 +76,11 @@ public class Serializer extends BaseUtils {
             objectInputStream = new ObjectInputStream(byteArrayInputStream);
             Object object = objectInputStream.readObject();
 
-            log.trace("反序列化成功, 结果为：{}", object.toString());
+            log.trace("deserialization success, result：{}", JacksonUtil.toStr(object));
 
             return object;
         } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("反序列化失败", e));
+            log.error("deserialization failed", e);
         }
 
         return null;
@@ -95,7 +92,7 @@ public class Serializer extends BaseUtils {
      * @param list
      */
     public static byte[] serializeList(List<Object> list) {
-        if (list.isEmpty()) {
+        if (CollectionUtils.isEmpty(list)) {
             return null;
         }
         ObjectOutputStream oos = null;
@@ -109,10 +106,8 @@ public class Serializer extends BaseUtils {
             }
             byteArray = baos.toByteArray();
         } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
+            log.error("serialize failed", e);
         }
-
-        log.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
 
         return byteArray;
     }
@@ -120,14 +115,14 @@ public class Serializer extends BaseUtils {
     /**
      * 反序列化 list 集合
      *
-     * @param bytes
+     * @param bytes 字节数组
      */
     public static List<Object> unserializeList(byte[] bytes) {
         if (bytes == null) {
             return null;
         }
 
-        List<Object> list = new ArrayList<Object>();
+        List<Object> list = new ArrayList<>();
         ByteArrayInputStream bais = null;
         ObjectInputStream ois = null;
         try {
@@ -142,10 +137,8 @@ public class Serializer extends BaseUtils {
                 list.add(obj);
             }
         } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("反序列化List<Object>失败", e));
+            log.error("deserialization list failed", e);
         }
-
-        log.trace("反序列化成功, 结果为：{}", list.toString());
 
         return list;
     }
@@ -153,7 +146,7 @@ public class Serializer extends BaseUtils {
     /**
      * 序列化 set 集合
      *
-     * @param set
+     * @param set 集合
      */
     public static byte[] serializeSet(Set<Object> set) {
         if (set.isEmpty()) {
@@ -170,10 +163,8 @@ public class Serializer extends BaseUtils {
             }
             byteArray = baos.toByteArray();
         } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
+            log.error("serialize failed", e);
         }
-
-        log.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
 
         return byteArray;
     }
@@ -181,14 +172,14 @@ public class Serializer extends BaseUtils {
     /**
      * 反序列化 set 集合
      *
-     * @param bytes
+     * @param bytes 字节数组
      */
     public static Set<Object> unserializeSet(byte[] bytes) {
         if (bytes == null) {
             return null;
         }
 
-        Set<Object> set = new HashSet<Object>();
+        Set<Object> set = new HashSet<>();
         ByteArrayInputStream bais = null;
         ObjectInputStream ois = null;
         try {
@@ -203,10 +194,8 @@ public class Serializer extends BaseUtils {
                 set.add(obj);
             }
         } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("反序列化Set<Object>失败", e));
+            log.error("deserialization failed", e);
         }
-
-        log.trace("反序列化成功, 结果为：{}", set.toString());
 
         return set;
     }

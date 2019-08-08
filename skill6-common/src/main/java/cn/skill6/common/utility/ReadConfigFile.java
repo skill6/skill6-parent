@@ -41,12 +41,12 @@ public class ReadConfigFile {
      * @param fileClassPath 无后缀的文件名称
      * @throws UnsupportedEncodingException
      * @throws IOException
+     * @return 资源模型
      */
     public static ResourceBundle readByClassPath(String fileClassPath)
             throws UnsupportedEncodingException, IOException {
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(fileClassPath);
 
-        return resourceBundle;
+        return ResourceBundle.getBundle(fileClassPath);
     }
 
     /**

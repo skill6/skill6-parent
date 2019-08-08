@@ -34,8 +34,6 @@ public class ReadHtmlFile {
                 sb.append(temp);
                 sb.append("\n");
             }
-        } catch (FileNotFoundException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
         } catch (IOException e) {
             log.error(StackTrace2Str.exceptionStackTrace2Str(e));
         }
@@ -79,7 +77,7 @@ public class ReadHtmlFile {
     public static String modifyHtmlKeywords(String htmlQualifiedName, String keywords) {
         // 空格变为英文逗号
         String cmmma = ",";
-        if (keywords != null && keywords != "" && keywords.indexOf(cmmma) == -1) {
+        if (keywords != null && !keywords.equals("") && !keywords.contains(cmmma)) {
             keywords = keywords.replaceAll("\\s", ",");
         }
 

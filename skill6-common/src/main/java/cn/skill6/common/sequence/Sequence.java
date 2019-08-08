@@ -51,7 +51,7 @@ public class Sequence {
     private final long sequenceBits = 12L;
 
     private final long workerIdShift = sequenceBits;
-    private final long datacenterIdShift = sequenceBits + workerIdBits;
+    private final long dataCenterIdShift = sequenceBits + workerIdBits;
     private final long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
 
     /**
@@ -135,7 +135,7 @@ public class Sequence {
          * 3.最后转换成10进制,就是最终生成的id
          */
         return ((timestamp - twepoch) << timestampLeftShift)
-                | (datacenterId << datacenterIdShift)
+                | (datacenterId << dataCenterIdShift)
                 | (workerId << workerIdShift)
                 | sequence;
     }

@@ -1,8 +1,11 @@
 package cn.skill6.common.transform;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.Map;
@@ -14,6 +17,7 @@ import java.util.Map;
  * @version 1.3
  * @since 2018年8月26日 下午11:36:57
  */
+@Slf4j
 public class JacksonUtil {
     // 驼峰和下划线格式自动转换
     private static final ObjectMapper objectMapper =
@@ -25,8 +29,14 @@ public class JacksonUtil {
         return objectMapper;
     }
 
-    public static String toStr(Object object) throws IOException {
-        return objectMapper.writeValueAsString(object);
+    public static String toStr(Object object) {
+        try {
+            return objectMapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            log.error("object to json error", e);
+        }
+
+        return StringUtils.EMPTY;
     }
 
     /**
@@ -59,16 +69,15 @@ public class JacksonUtil {
     /**
      * entity包含实体类、Map、List等
      *
-     * @param jsonStr
-     * @param clazz
+     * @param jsonStr json字符串
+     * @param clazz   目标类型
      * @throws IOException
      */
-    public static <T, E> T str2Entity(String jsonStr, Class<T> clazz) throws IOException {
+    public static <T, E> T fromStr(String jsonStr, Class<T> clazz) throws IOException {
         return (T) objectMapper.readValue(jsonStr, clazz);
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> Map<String, T> str2Map(String jsonStr) throws IOException {
-        return str2Entity(jsonStr, Map.class);
+        return fromStr(jsonStr, Map.class);
     }
 }

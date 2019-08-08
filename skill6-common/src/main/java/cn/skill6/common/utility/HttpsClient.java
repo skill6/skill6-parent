@@ -163,14 +163,11 @@ public final class HttpsClient {
      * @return 请求配置
      */
     private static RequestConfig requestConfig() {
-        RequestConfig requestConfig =
-                RequestConfig.custom()
-                        .setConnectTimeout(35000) // 连接主机服务超时时间
-                        .setConnectionRequestTimeout(35000) // 请求超时时间
-                        .setSocketTimeout(60000) // 数据读取超时时间
-                        .build();
-
-        return requestConfig;
+        return RequestConfig.custom()
+                .setConnectTimeout(35000) // 连接主机服务超时时间
+                .setConnectionRequestTimeout(35000) // 请求超时时间
+                .setSocketTimeout(60000) // 数据读取超时时间
+                .build();
     }
 
     /**
@@ -179,9 +176,7 @@ public final class HttpsClient {
      * @param httpResponse http返回体
      * @param httpClient   http客户端
      */
-    private static void closeResource(
-            CloseableHttpResponse httpResponse, CloseableHttpClient httpClient) {
-
+    private static void closeResource(CloseableHttpResponse httpResponse, CloseableHttpClient httpClient) {
         if (httpResponse != null) {
             try {
                 httpResponse.close();

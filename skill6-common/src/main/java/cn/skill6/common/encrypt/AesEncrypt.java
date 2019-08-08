@@ -3,8 +3,14 @@ package cn.skill6.common.encrypt;
 import cn.skill6.common.exception.tools.StackTrace2Str;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 /**
@@ -15,7 +21,7 @@ import java.util.Base64;
  * @since 2018年3月17日 下午7:35:14
  */
 @Slf4j
-public class AesEncrypt {
+public final class AesEncrypt {
 
     /**
      * 加密算法
@@ -38,8 +44,8 @@ public class AesEncrypt {
     /**
      * AES加密,使用默认密钥
      *
-     * @param dataSource
-     * @throws Exception
+     * @param dataSource 数据源
+     * @throws Exception 异常
      */
     public static String encrypt(final String dataSource) throws Exception {
         return encrypt(dataSource, DEFAULT_AES_KEY);
@@ -48,13 +54,17 @@ public class AesEncrypt {
     /**
      * AES加密
      *
-     * @param dataSource
-     * @param secretKey
-     * @throws Exception
+     * @param dataSource 数据源
+     * @param secretKey  密钥
+     * @return 加密结果
+     * @throws UnsupportedEncodingException 不支持异常
      */
-    public static String encrypt(final String dataSource, final String secretKey) throws Exception {
+    public static String encrypt(final String dataSource, final String secretKey) throws
+            UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException,
+            InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+
         if (secretKey == null) {
-            System.out.print("Key为空null");
+            System.out.print("Key is null");
             return null;
         }
         // 判断Key是否为16位
@@ -74,21 +84,19 @@ public class AesEncrypt {
     /**
      * AES解密,使用默认密钥
      *
-     * @param dataSource
-     * @throws Exception
+     * @param dataSource 数据源
      */
-    public static String decrypt(final String dataSource) throws Exception {
+    public static String decrypt(final String dataSource) {
         return decrypt(dataSource, DEFAULT_AES_KEY);
     }
 
     /**
      * AES解密
      *
-     * @param dataSource
-     * @param secretKey
-     * @throws Exception
+     * @param dataSource 数据源
+     * @param secretKey  密钥
      */
-    public static String decrypt(final String dataSource, final String secretKey) throws Exception {
+    public static String decrypt(final String dataSource, final String secretKey) {
         try {
             // 判断Key是否正确
             if (secretKey == null) {

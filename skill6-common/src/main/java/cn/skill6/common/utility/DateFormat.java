@@ -68,9 +68,8 @@ public class DateFormat {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
-        Long todaySeconds = zeroSeconds - calendar.getTime().getTime();
 
-        return todaySeconds;
+        return zeroSeconds - calendar.getTime().getTime();
     }
 
     /**

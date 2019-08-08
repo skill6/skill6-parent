@@ -36,9 +36,7 @@ public class TemplateOpertionAdvice extends BaseSpringAspect {
 
         String fieldName = methodName.substring(3);
         // 驼峰转下划线
-        String fieldNameUnderScore = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, fieldName);
-
-        return fieldNameUnderScore;
+        return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, fieldName);
     }
 
     @Override

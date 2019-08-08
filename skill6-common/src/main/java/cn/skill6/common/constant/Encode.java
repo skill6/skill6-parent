@@ -26,8 +26,9 @@ public class Encode {
     /**
      * ISO-8859-1 转 GBK
      *
-     * @param originStr
-     * @throws UnsupportedEncodingException
+     * @param originStr 目标字符串
+     * @return 转码后的字符串
+     * @throws UnsupportedEncodingException 不支持异常
      */
     public static String iso2GBK(String originStr) throws UnsupportedEncodingException {
         return new String(originStr.getBytes(ENCODE_ISO8859), ENCODE_GBK);
@@ -36,8 +37,9 @@ public class Encode {
     /**
      * ISO-8859-1 转 UTF-8
      *
-     * @param originStr
-     * @throws UnsupportedEncodingException
+     * @param originStr 目标字符串
+     * @return 转码后的字符串
+     * @throws UnsupportedEncodingException 不支持异常
      */
     public static String iso2UTF8(String originStr) throws UnsupportedEncodingException {
         return new String(originStr.getBytes(ENCODE_ISO8859), DEFAULT_ENCODE);

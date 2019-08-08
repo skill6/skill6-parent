@@ -1,5 +1,10 @@
 package cn.skill6.common.constant;
 
+import cn.skill6.common.exception.general.ParamsException;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Arrays;
+
 /**
  * 操作系统平台
  *
@@ -37,12 +42,8 @@ public enum OsPlatform {
      */
     public static OsPlatform getCurrentOs() {
         String currOsName = System.getProperty("os.name");
-        if (currOsName.indexOf(OsPlatform.WINDOWS.getOsName()) != -1) {
-            return OsPlatform.WINDOWS;
-        }
-        if (currOsName.indexOf(OsPlatform.MAC.getOsName()) != -1) {
-            return OsPlatform.MAC;
-        }
-        return OsPlatform.LINUX;
+
+        return Arrays.stream(OsPlatform.values()).filter(osPlatform -> StringUtils.equals(osPlatform.getOsName(),
+                currOsName)).findFirst().orElseThrow(ParamsException::new);
     }
 }

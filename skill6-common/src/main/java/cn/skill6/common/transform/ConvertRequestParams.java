@@ -31,8 +31,8 @@ public class ConvertRequestParams {
         }
 
         String[] params = param.split("&");
-        for (int i = 0; i < params.length; i++) {
-            String[] p = params[i].split("=");
+        for (String s : params) {
+            String[] p = s.split("=");
             if (p.length == 2) {
                 map.put(p[0], p[1]);
             }
@@ -43,16 +43,16 @@ public class ConvertRequestParams {
     /**
      * map转化为请求参数的字符串形式(如name=husen&pwd=123)
      *
-     * @param map
+     * @param map 参数map
      * @return 字符串
      */
     public static String map2ParamsStr(Map<String, Object> map) {
         if (map == null) {
             return "";
         }
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, Object> entry : map.entrySet()) {
-            sb.append(entry.getKey() + "=" + entry.getValue());
+            sb.append(entry.getKey()).append("=").append(entry.getValue());
             sb.append("&");
         }
 
@@ -68,8 +68,8 @@ public class ConvertRequestParams {
     /**
      * map转化为请求参数的字符串形式(如name=husen&pwd=123),并对键值对进行URL编码
      *
-     * @param map
-     * @throws UnsupportedEncodingException
+     * @param map 参数map
+     * @throws UnsupportedEncodingException 不支持异常
      */
     public static String map2ParamsEncodeStr(Map<String, String> map)
             throws UnsupportedEncodingException {
@@ -77,12 +77,12 @@ public class ConvertRequestParams {
             return "";
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String key = null, value = null;
         for (Map.Entry<String, String> entry : map.entrySet()) {
             key = URLEncoder.encode(entry.getKey(), Encode.DEFAULT_ENCODE);
             value = URLEncoder.encode(entry.getValue(), Encode.DEFAULT_ENCODE);
-            sb.append(key + "=" + value);
+            sb.append(key).append("=").append(value);
             sb.append("&");
         }
 
@@ -98,7 +98,7 @@ public class ConvertRequestParams {
     /**
      * 请求参数转化为map
      *
-     * @param request
+     * @param request HTTP请求
      */
     public static Map<String, String> params2Map(HttpServletRequest request) {
         Map<String, String> map = new HashMap<>(100);

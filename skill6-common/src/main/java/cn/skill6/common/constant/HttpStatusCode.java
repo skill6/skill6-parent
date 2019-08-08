@@ -1,5 +1,7 @@
 package cn.skill6.common.constant;
 
+import org.apache.http.HttpStatus;
+
 /**
  * 常用的http状态码
  *
@@ -11,12 +13,12 @@ public class HttpStatusCode {
     /**
      * 正确的请求返回正确的结果
      */
-    public static final int OK = 200;
+    public static final int OK = HttpStatus.SC_OK;
 
     /**
      * [POST/PUT/PATCH]：资源被正确的创建,如新建用户
      */
-    public static final int CREATED = 201;
+    public static final int CREATED = HttpStatus.SC_CREATED;
 
     /**
      * 请求时正确的,但是结果正在处理中（异步任务）

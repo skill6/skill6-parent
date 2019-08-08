@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
  * @version 1.1
  * @since 2018年2月28日 下午12:09:52
  */
-public class Md5Encrypt {
+public final class Md5Encrypt {
     /**
      * 获取md5实例
      */
@@ -34,7 +34,6 @@ public class Md5Encrypt {
      *
      * @param dataSource 待加密的数据
      * @return 加密后的字符串
-     * @throws Exception
      */
     public static String getMD5Code(String dataSource) {
         return DigestUtils.md5DigestAsHex(dataSource.getBytes());

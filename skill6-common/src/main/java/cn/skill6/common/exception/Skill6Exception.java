@@ -8,6 +8,7 @@ package cn.skill6.common.exception;
  * @since 2018年2月26日 下午11:58:54
  */
 public class Skill6Exception extends RuntimeException {
+
     private static final long serialVersionUID = 7462624691843766045L;
 
     /**

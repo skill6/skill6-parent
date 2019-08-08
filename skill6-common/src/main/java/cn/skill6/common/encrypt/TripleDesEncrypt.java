@@ -1,9 +1,11 @@
 package cn.skill6.common.encrypt;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
+import javax.crypto.*;
 import javax.crypto.spec.DESedeKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
 
 /**
@@ -56,9 +58,7 @@ public class TripleDesEncrypt {
         cipher.init(Cipher.ENCRYPT_MODE, securekey);
         final byte[] b = cipher.doFinal(dataSource.getBytes());
 
-        String res = Base64.getEncoder().encodeToString(b);
-
-        return res;
+        return Base64.getEncoder().encodeToString(b);
     }
 
     /**
@@ -78,21 +78,20 @@ public class TripleDesEncrypt {
      * @param dataSource 加密之后的数据
      * @param secretKey  密钥,长度必须是8的倍数
      * @return 明码
-     * @throws Exception
      */
-    public static String decrypt(final String dataSource, final String secretKey) throws Exception {
+    public static String decrypt(final String dataSource, final String secretKey) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException {
         // --通过base64,将字符串转成byte数组
         // final byte[] bytesrc = Base64.getDecoder().decode(src);
-        final byte[] bytesrc = Base64.getMimeDecoder().decode(dataSource);
+        final byte[] byteSrc = Base64.getMimeDecoder().decode(dataSource);
         // --解密的key
-        final DESedeKeySpec dks = new DESedeKeySpec(secretKey.getBytes("UTF-8"));
+        final DESedeKeySpec dks = new DESedeKeySpec(secretKey.getBytes(StandardCharsets.UTF_8));
         final SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(TRIPLE_DES_ALGORITHM);
-        final SecretKey securekey = keyFactory.generateSecret(dks);
+        final SecretKey key = keyFactory.generateSecret(dks);
 
         // --Chipher对象解密
         final Cipher cipher = Cipher.getInstance(TRIPLE_DES_TRANSFORMATION);
-        cipher.init(Cipher.DECRYPT_MODE, securekey);
-        final byte[] retByte = cipher.doFinal(bytesrc);
+        cipher.init(Cipher.DECRYPT_MODE, key);
+        final byte[] retByte = cipher.doFinal(byteSrc);
 
         return new String(retByte);
     }

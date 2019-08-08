@@ -21,8 +21,8 @@ public class BaseController {
     /**
      * ModelAttribute注解 表示先执行
      *
-     * @param request
-     * @param response
+     * @param request  HTTP请求
+     * @param response HTTP响应
      */
     @ModelAttribute
     public void setHttpAttribute(HttpServletRequest request, HttpServletResponse response) {

@@ -18,7 +18,7 @@ import java.util.Base64;
  * @since 2018年3月19日 上午9:15:27
  */
 @Slf4j
-public class DesEncrypt {
+public final class DesEncrypt {
 
     /**
      * 加密算法
@@ -55,11 +55,7 @@ public class DesEncrypt {
             cipher = Cipher.getInstance(DES_ALGORITHM);
             cipher.init(Cipher.ENCRYPT_MODE, generateKey(secretKey));
 
-        } catch (NoSuchAlgorithmException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
-        } catch (NoSuchPaddingException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
-        } catch (InvalidKeyException e) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
             log.error(StackTrace2Str.exceptionStackTrace2Str(e));
         }
 

@@ -16,7 +16,6 @@ import java.sql.SQLException;
  * @version 1.3
  * @since 2018年8月16日 上午12:01:07
  */
-@SuppressWarnings("rawtypes")
 public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseTypeHandler<E> {
     private Class<E> type;
     private E[] enums;
@@ -45,9 +44,9 @@ public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseType
             throws SQLException {
         // baseTypeHandler已经帮我们做了parameter的null判断
         if (jdbcType == null) {
-            ps.setObject(i, parameter.getStateCode());
+            ps.setObject(i, parameter.getEnumName());
         } else {
-            ps.setObject(i, parameter.getStateCode(), jdbcType.TYPE_CODE);
+            ps.setObject(i, parameter.getEnumName(), jdbcType.TYPE_CODE);
         }
     }
 
@@ -95,7 +94,7 @@ public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseType
      */
     private E locateEnumStatus(String stateCode) {
         for (E e : enums) {
-            if (e.getStateCode().equals(stateCode)) {
+            if (e.getEnumName().equals(stateCode)) {
                 return e;
             }
         }

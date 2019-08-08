@@ -1,6 +1,11 @@
 package cn.skill6.common.entity.enums;
 
 import cn.skill6.common.entity.enums.intf.BaseEnum;
+import cn.skill6.common.exception.general.ParamsException;
+import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Arrays;
 
 /**
  * 排序枚举
@@ -9,50 +14,29 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * @version 1.1
  * @since 2018年9月21日 下午10:34:15
  */
-public enum SortType implements BaseEnum<Enum<SortType>, String> {
-    ASCENDING("ASC", "升序排列"),
-    DESCENDING("DESC", "降序排列");
-
-    private String stateCode;
-    private String description;
+@AllArgsConstructor
+public enum SortType implements BaseEnum<Enum<SortType>> {
 
     /**
-     * @param stateCode
-     * @param description
+     * 升序排列
      */
-    private SortType(String stateCode, String description) {
-        this.stateCode = stateCode;
-        this.description = description;
-    }
+    ASCENDING("ASC"),
+
+    /**
+     * "降序排列
+     */
+    DESCENDING("DESC");
+
+    private String value;
 
     @Override
-    public String getStateCode() {
-        return stateCode;
+    public String getEnumName() {
+        return StringUtils.lowerCase(name());
     }
 
-    @Override
-    public String getDescrition() {
-        return description;
+    public static SortType getEnum(String enumName) {
+        return Arrays.stream(SortType.values()).filter(sortType -> StringUtils.equals(sortType.getEnumName(),
+                enumName)).findFirst().orElseThrow(ParamsException::new);
     }
 
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * @param stateCode the stateCode to set
-     */
-    public void setStateCode(String stateCode) {
-        this.stateCode = stateCode;
-    }
 }

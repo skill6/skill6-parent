@@ -37,9 +37,7 @@ public class ReflectEnity {
         Class<?> currentClass = clazz;
         while (currentClass != null) {
             final Field[] declaredFields = currentClass.getDeclaredFields();
-            for (final Field field : declaredFields) {
-                allFields.add(field);
-            }
+            allFields.addAll(Arrays.asList(declaredFields));
             currentClass = currentClass.getSuperclass();
         }
 

@@ -1,42 +1,39 @@
 package cn.skill6.common.entity.enums;
 
 import cn.skill6.common.entity.enums.intf.BaseEnum;
+import org.apache.commons.lang3.StringUtils;
 
 /**
- * 目录类型枚举，如文章、下载等
+ * 目录类型枚举，如文章、下载等, 长度不超过16
  *
  * @author 何明胜
  * @version 1.0
  * @since 2018年9月2日 下午7:20:58
  */
-public enum CategoryType implements BaseEnum<Enum<CategoryType>, String> {
-    ARTICLE("article", "目录类型为文章"),
-    DISCUSS_AREA("discuss_area", "讨论区"),
-    FILE_DOWNLOAD("file_download", "文章下载");
+public enum CategoryType implements BaseEnum<Enum<CategoryType>> {
 
     /**
-     * 长度不超过16
+     * 目录类型为文章
      */
-    private String stateCode;
-
-    private String description;
+    ARTICLE,
 
     /**
-     * @param stateCode
-     * @param description
+     * 讨论区
      */
-    private CategoryType(String stateCode, String description) {
-        this.stateCode = stateCode;
-        this.description = description;
-    }
+    DISCUSS_AREA,
+
+    /**
+     * 文章下载
+     */
+    FILE_DOWNLOAD;
 
     @Override
-    public String getStateCode() {
-        return stateCode;
+    public String getEnumName() {
+        return StringUtils.lowerCase(name());
     }
 
-    @Override
-    public String getDescrition() {
-        return description;
+    public static CategoryType getEnum(String enumName) {
+        return valueOf(StringUtils.upperCase(enumName));
     }
+
 }
