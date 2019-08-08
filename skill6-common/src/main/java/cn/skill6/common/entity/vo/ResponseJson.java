@@ -1,12 +1,11 @@
 package cn.skill6.common.entity.vo;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * RESTful 返回json
@@ -19,22 +18,25 @@ import lombok.Data;
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class ResponseJson implements Serializable {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /** 不使用封装,默认为false */
-  private Boolean success;
+    /**
+     * 不使用封装,默认为false
+     */
+    private Boolean success;
 
-  private Object message;
+    private Object message;
 
-  public ResponseJson() {}
+    public ResponseJson() {
+    }
 
-  /**
-   * 只有结果
-   *
-   * @param success
-   */
-  public ResponseJson(Boolean success) {
-    super();
-    this.success = success;
-  }
+    /**
+     * 只有结果
+     *
+     * @param success
+     */
+    public ResponseJson(Boolean success) {
+        super();
+        this.success = success;
+    }
 }

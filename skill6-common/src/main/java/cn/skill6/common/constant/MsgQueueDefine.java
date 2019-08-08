@@ -8,17 +8,25 @@ package cn.skill6.common.constant;
  * @since 2018年3月20日 下午4:21:40
  */
 public class MsgQueueDefine {
-  /* --------------------- 点对点模式 ----------------------*/
+    /* --------------------- 点对点模式 ----------------------*/
 
-  /** 简单邮件的队列 */
-  public static final String SIMPLE_EMAIL_QUEUE = "queue:pers.husen.service.email.simple";
-  /** 附件邮件的队列 */
-  public static final String ATTACH_EMAIL_QUEUE = "queue:pers.husen.service.email.attach";
+    /**
+     * 简单邮件的队列
+     */
+    public static final String SIMPLE_EMAIL_QUEUE = "queue:cn.skill6.service.email.simple";
+    /**
+     * 附件邮件的队列
+     */
+    public static final String ATTACH_EMAIL_QUEUE = "queue:cn.skill6.service.email.attach";
 
-  /* --------------------- 发布/订阅模式 ----------------------*/
+    /* --------------------- 发布/订阅模式 ----------------------*/
 
-  /** 简单邮件的订阅 */
-  public static final String SIMPLE_EMAIL_TOPIC = "topic:pers.husen.service.email.simple";
-  /** 附件邮件的队列 */
-  public static final String ATTACH_EMAIL_TOPIC = "topic:pers.husen.service.email.attach";
+    /**
+     * 简单邮件的订阅
+     */
+    public static final String SIMPLE_EMAIL_TOPIC = "topic:cn.skill6.service.email.simple";
+    /**
+     * 附件邮件的队列
+     */
+    public static final String ATTACH_EMAIL_TOPIC = "topic:cn.skill6.service.email.attach";
 }

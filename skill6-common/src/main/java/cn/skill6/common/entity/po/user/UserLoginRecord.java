@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.user;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 登录记录实体类
@@ -18,19 +18,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserLoginRecord {
 
-  private Long loginId;
+    private Long loginId;
 
-  private Long userId;
+    private Long userId;
 
-  private String loginIp;
+    private String loginIp;
 
-  private String loginType;
+    private String loginType;
 
-  private String loginEquipment;
+    private String loginEquipment;
 
-  private Date loginTime;
+    private Date loginTime;
 
-  private Boolean loginResult;
+    private Boolean loginResult;
 
-  private String loginFailReason;
+    private String loginFailReason;
 }

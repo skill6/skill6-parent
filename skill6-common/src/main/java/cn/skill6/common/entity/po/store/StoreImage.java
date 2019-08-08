@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.store;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 图片上传实体类
@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class StoreImage {
 
-  private Long imageId;
+    private Long imageId;
 
-  private String imageName;
+    private String imageName;
 
-  private String imageUrl;
+    private String imageUrl;
 
-  private Date imageUploadTime;
+    private Date imageUploadTime;
 
-  private String imageType;
+    private String imageType;
 
-  private String imageHashCode;
+    private String imageHashCode;
 
-  private Integer imageDownloadCount;
+    private Integer imageDownloadCount;
 }

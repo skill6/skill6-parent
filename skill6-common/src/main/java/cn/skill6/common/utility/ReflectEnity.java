@@ -13,55 +13,53 @@ import java.util.List;
  * @since 2018年9月22日 下午11:09:01
  */
 public class ReflectEnity {
-  /**
-   * 返回当前类的所有属性
-   *
-   * @param clazz
-   * @return 属性数组
-   */
-  public static List<Field> getCurrentFields(Class<?> clazz) {
-    Field[] fields = clazz.getDeclaredFields();
+    /**
+     * 返回当前类的所有属性
+     *
+     * @param clazz
+     * @return 属性数组
+     */
+    public static List<Field> getCurrentFields(Class<?> clazz) {
+        Field[] fields = clazz.getDeclaredFields();
 
-    return Arrays.asList(fields);
-  }
-
-  /**
-   * 获取一个类及其父类的所有属性
-   *
-   * @param clazz
-   * @return 属性数组
-   */
-  public static List<Field> getAllFields(Class<?> clazz) {
-    final List<Field> allFields = new ArrayList<Field>();
-
-    Class<?> currentClass = clazz;
-    while (currentClass != null) {
-      final Field[] declaredFields = currentClass.getDeclaredFields();
-      for (final Field field : declaredFields) {
-        allFields.add(field);
-      }
-      currentClass = currentClass.getSuperclass();
+        return Arrays.asList(fields);
     }
 
-    return allFields;
-  }
+    /**
+     * 获取一个类及其父类的所有属性
+     *
+     * @param clazz
+     * @return 属性数组
+     */
+    public static List<Field> getAllFields(Class<?> clazz) {
+        final List<Field> allFields = new ArrayList<Field>();
 
-  /**
-   * 通过反射判断一个字符串是否是某个实体类的属性，目前主要针对String类型，与数据库对应
-   *
-   * @param aimFieldName 泛型参数
-   * @return 判断结果
-   */
-  public static boolean judgeFieldIsExist(Class<?> clazz, String aimFieldName) {
-    List<Field> fields = getAllFields(clazz);
+        Class<?> currentClass = clazz;
+        while (currentClass != null) {
+            final Field[] declaredFields = currentClass.getDeclaredFields();
+            allFields.addAll(Arrays.asList(declaredFields));
+            currentClass = currentClass.getSuperclass();
+        }
 
-    for (Field field : fields) {
-      String fieldName = field.getName();
-      if (fieldName.equals(aimFieldName)) {
-        return true;
-      }
+        return allFields;
     }
 
-    return false;
-  }
+    /**
+     * 通过反射判断一个字符串是否是某个实体类的属性，目前主要针对String类型，与数据库对应
+     *
+     * @param aimFieldName 泛型参数
+     * @return 判断结果
+     */
+    public static boolean judgeFieldIsExist(Class<?> clazz, String aimFieldName) {
+        List<Field> fields = getAllFields(clazz);
+
+        for (Field field : fields) {
+            String fieldName = field.getName();
+            if (fieldName.equals(aimFieldName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

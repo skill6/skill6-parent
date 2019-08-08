@@ -11,11 +11,11 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * @since 2018年10月5日 下午8:06:52
  */
 public interface FeatureThumbsUpRecordSvc {
-  public ResponseJson addThumbsUpRecord(FeatureThumbsUpRecord featureThumbsUpRecord);
+    public ResponseJson addThumbsUpRecord(FeatureThumbsUpRecord featureThumbsUpRecord);
 
-  public ResponseJson findByPrimaryKey(Long userId, Long articleId, String thumbsUpType);
+    public ResponseJson findByPrimaryKey(Long userId, Long articleId, String thumbsUpType);
 
-  public ResponseJson findAll();
+    public ResponseJson findAll();
 
-  public ResponseJson modifyByPrimaryKey(FeatureThumbsUpRecord featureThumbsUpRecord);
+    public ResponseJson modifyByPrimaryKey(FeatureThumbsUpRecord featureThumbsUpRecord);
 }

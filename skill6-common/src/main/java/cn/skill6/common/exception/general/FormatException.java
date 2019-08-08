@@ -11,79 +11,83 @@ import cn.skill6.common.exception.Skill6Exception;
  */
 public class FormatException extends Skill6Exception {
 
-  private static final long serialVersionUID = 8193274044249365942L;
+    private static final long serialVersionUID = 8193274044249365942L;
 
-  public FormatException() {
-    super();
-  }
+    public FormatException() {
+        super();
+    }
 
-  /**
-   * @param errorCode
-   * @param message
-   * @param cause
-   * @param enableSuppression
-   * @param writableStackTrace
-   */
-  public FormatException(
-      int errorCode,
-      String message,
-      Throwable cause,
-      boolean enableSuppression,
-      boolean writableStackTrace) {
-    super(errorCode, message, cause, enableSuppression, writableStackTrace);
-  }
+    /**
+     * @param errorCode
+     * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
+     */
+    public FormatException(
+            int errorCode,
+            String message,
+            Throwable cause,
+            boolean enableSuppression,
+            boolean writableStackTrace) {
+        super(errorCode, message, cause, enableSuppression, writableStackTrace);
+    }
 
-  /**
-   * @param errorCode
-   * @param message
-   * @param cause
-   */
-  public FormatException(int errorCode, String message, Throwable cause) {
-    super(errorCode, message, cause);
-  }
+    /**
+     * @param errorCode
+     * @param message
+     * @param cause
+     */
+    public FormatException(int errorCode, String message, Throwable cause) {
+        super(errorCode, message, cause);
+    }
 
-  /**
-   * @param errorCode
-   * @param message
-   */
-  public FormatException(int errorCode, String message) {
-    super(errorCode, message);
-  }
+    /**
+     * @param errorCode
+     * @param message
+     */
+    public FormatException(int errorCode, String message) {
+        super(errorCode, message);
+    }
 
-  /**
-   * @param errorCode
-   * @param cause
-   */
-  public FormatException(int errorCode, Throwable cause) {
-    super(errorCode, cause);
-  }
+    /**
+     * @param errorCode
+     * @param cause
+     */
+    public FormatException(int errorCode, Throwable cause) {
+        super(errorCode, cause);
+    }
 
-  /**
-   * @param message
-   * @param cause
-   * @param enableSuppression
-   * @param writableStackTrace
-   */
-  public FormatException(
-      String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    /**
+     * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
+     */
+    public FormatException(
+            String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  /**
-   * @param message
-   * @param cause
-   */
-  public FormatException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    /**
+     * @param message
+     * @param cause
+     */
+    public FormatException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  /** @param message */
-  public FormatException(String message) {
-    super(message);
-  }
+    /**
+     * @param message
+     */
+    public FormatException(String message) {
+        super(message);
+    }
 
-  /** @param cause */
-  public FormatException(Throwable cause) {
-    super(cause);
-  }
+    /**
+     * @param cause
+     */
+    public FormatException(Throwable cause) {
+        super(cause);
+    }
 }

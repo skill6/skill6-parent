@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.user;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 用户信息实体类
@@ -18,21 +18,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserAdditionInfo {
 
-  private Long userId;
+    private Long userId;
 
-  private String userNickName;
+    private String userNickName;
 
-  private Date userRegisterTime;
+    private Date userRegisterTime;
 
-  private String userHeadUrl;
+    private String userHeadUrl;
 
-  private Boolean userSex;
+    private Boolean userSex;
 
-  private String userBirthday;
+    private String userBirthday;
 
-  private Boolean userBirthdayType;
+    private Boolean userBirthdayType;
 
-  private String userDesc;
+    private String userDesc;
 
-  private Date userLastLoginTime;
+    private Date userLastLoginTime;
 }

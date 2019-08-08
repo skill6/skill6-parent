@@ -11,17 +11,15 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class RequestParser {
 
-  /**
-   * 根据请求得到请求index，如：http://127.0.0.1:8080
-   *
-   * @param request
-   */
-  public static StringBuffer parseContextIndex(HttpServletRequest request) {
-    StringBuffer url = request.getRequestURL();
-    String uri = request.getRequestURI();
+    /**
+     * 根据请求得到请求index，如：http://127.0.0.1:8080
+     *
+     * @param request HTTP请求
+     */
+    public static StringBuffer parseContextIndex(HttpServletRequest request) {
+        StringBuffer url = request.getRequestURL();
+        String uri = request.getRequestURI();
 
-    StringBuffer contextUrl = url.delete(url.length() - uri.length(), url.length());
-
-    return contextUrl;
-  }
+        return url.delete(url.length() - uri.length(), url.length());
+    }
 }

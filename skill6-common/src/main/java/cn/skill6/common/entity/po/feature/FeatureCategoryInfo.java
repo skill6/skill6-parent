@@ -1,11 +1,11 @@
 package cn.skill6.common.entity.po.feature;
 
-import java.util.Date;
-
 import cn.skill6.common.entity.enums.CategoryType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 目录分类实体类
@@ -19,15 +19,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FeatureCategoryInfo {
 
-  private Long categoryId;
+    private Long categoryId;
 
-  private String categoryName;
+    private String categoryName;
 
-  private CategoryType categoryType;
+    private CategoryType categoryType;
 
-  private Date categoryCreateTime;
+    private Date categoryCreateTime;
 
-  private Date categoryUpdateTime;
+    private Date categoryUpdateTime;
 
-  private Boolean categoryValid;
+    private Boolean categoryValid;
 }

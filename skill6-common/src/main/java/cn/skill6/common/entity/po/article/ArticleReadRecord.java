@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.article;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 文章阅读记录实体类
@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticleReadRecord {
 
-  private Long articleId;
+    private Long articleId;
 
-  private Date articleDateDaily;
+    private Date articleDateDaily;
 
-  private Integer articleReadDaily;
+    private Integer articleReadDaily;
 }

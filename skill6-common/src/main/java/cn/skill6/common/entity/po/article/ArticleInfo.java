@@ -1,13 +1,13 @@
 package cn.skill6.common.entity.po.article;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import cn.skill6.common.entity.po.abst.PaginationAndSort;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 文章信息实体类
@@ -21,37 +21,37 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class ArticleInfo extends PaginationAndSort implements Serializable {
-  private static final long serialVersionUID = 1870286929298864677L;
+    private static final long serialVersionUID = 1870286929298864677L;
 
-  private Long articleId;
+    private Long articleId;
 
-  private Long categoryId;
+    private Long categoryId;
 
-  private String articleTitle;
+    private String articleTitle;
 
-  private String articleAuthor;
+    private String articleAuthor;
 
-  private String articleSummary;
+    private String articleSummary;
 
-  private String articleLabel;
+    private String articleLabel;
 
-  private Integer articleReadTotal;
+    private Integer articleReadTotal;
 
-  private Date articleCreateTime;
+    private Date articleCreateTime;
 
-  private Date articleUpdateTime;
+    private Date articleUpdateTime;
 
-  private Boolean artilcePlaceTop;
+    private Boolean artilcePlaceTop;
 
-  private Integer articleTopPriority;
+    private Integer articleTopPriority;
 
-  private Boolean articleAttachFile;
+    private Boolean articleAttachFile;
 
-  private Boolean articleValid;
+    private Boolean articleValid;
 
-  private String articleHtmlContent;
+    private String articleHtmlContent;
 
-  private String articleMdContent;
+    private String articleMdContent;
 
-  private String articleAttachUrl;
+    private String articleAttachUrl;
 }

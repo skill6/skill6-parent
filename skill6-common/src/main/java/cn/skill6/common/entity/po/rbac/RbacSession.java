@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.rbac;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * RBAC会话存储
@@ -18,13 +18,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RbacSession {
 
-  private Long sessionId;
+    private Long sessionId;
 
-  private Date sessionCreateTime;
+    private Date sessionCreateTime;
 
-  private Date sessionUpdateTime;
+    private Date sessionUpdateTime;
 
-  private Boolean sessionValid;
+    private Boolean sessionValid;
 
-  private String sessionContent;
+    private String sessionContent;
 }

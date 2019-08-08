@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.feature;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 点赞记录实体类
@@ -18,11 +18,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FeatureThumbsUpRecord {
 
-  private Long userId;
+    private Long userId;
 
-  private Long articleId;
+    private Long articleId;
 
-  private String thumbsUpType;
+    private String thumbsUpType;
 
-  private Date thumbsUpTime;
+    private Date thumbsUpTime;
 }

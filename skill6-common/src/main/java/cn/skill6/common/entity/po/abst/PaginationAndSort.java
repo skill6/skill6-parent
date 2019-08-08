@@ -1,8 +1,7 @@
 package cn.skill6.common.entity.po.abst;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import cn.skill6.common.entity.enums.SortType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +18,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public abstract class PaginationAndSort {
 
-  /** 从1开始 */
-  private int pageNum = 1;
+    /**
+     * 从1开始
+     */
+    private int pageNum = 1;
 
-  private int pageSize = 10;
+    private int pageSize = 10;
 
-  private String orderBy;
-  @JsonIgnore private SortType sortType = SortType.ASCENDING;
+    private String orderBy;
+    @JsonIgnore
+    private SortType sortType = SortType.ASCENDING;
 }

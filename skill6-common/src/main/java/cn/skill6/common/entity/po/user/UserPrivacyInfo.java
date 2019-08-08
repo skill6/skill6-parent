@@ -17,21 +17,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserPrivacyInfo {
 
-  private Long userId;
+    private Long userId;
 
-  private String userName;
+    private String userName;
 
-  private String userEmail;
+    private String userEmail;
 
-  private String userPhone;
+    private String userPhone;
 
-  private String userLoginFrom;
+    private String userLoginFrom;
 
-  private String userPassword;
+    private String userPassword;
 
-  private String userPwdSalt;
+    private String userPwdSalt;
 
-  private String userType;
+    private String userType;
 
-  private UserState userState;
+    private UserState userState;
 }

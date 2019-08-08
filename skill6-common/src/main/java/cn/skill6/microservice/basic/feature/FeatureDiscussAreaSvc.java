@@ -12,34 +12,34 @@ import cn.skill6.common.entity.vo.ResponseJson;
  */
 public interface FeatureDiscussAreaSvc {
 
-  /**
-   * 增加讨论
-   *
-   * @param featureDiscussArea
-   * @return
-   */
-  public ResponseJson addDiscussArea(FeatureDiscussArea featureDiscussArea);
+    /**
+     * 增加讨论
+     *
+     * @param featureDiscussArea
+     * @return 操作结果
+     */
+    public ResponseJson addDiscussArea(FeatureDiscussArea featureDiscussArea);
 
-  /**
-   * 根据id查找讨论
-   *
-   * @param discussId
-   * @return
-   */
-  public ResponseJson findByDiscussId(Long discussId);
+    /**
+     * 根据id查找讨论
+     *
+     * @param discussId 讨论Id
+     * @return 操作结果
+     */
+    public ResponseJson findByDiscussId(Long discussId);
 
-  /**
-   * 查找所有讨论
-   *
-   * @return
-   */
-  public ResponseJson findAll();
+    /**
+     * 查找所有讨论
+     *
+     * @return 查询结果
+     */
+    public ResponseJson findAll();
 
-  /**
-   * 修改讨论
-   *
-   * @param featureDiscussArea
-   * @return
-   */
-  public ResponseJson modifyByDiscussId(FeatureDiscussArea featureDiscussArea);
+    /**
+     * 修改讨论
+     *
+     * @param featureDiscussArea
+     * @return 查询结果
+     */
+    public ResponseJson modifyByDiscussId(FeatureDiscussArea featureDiscussArea);
 }

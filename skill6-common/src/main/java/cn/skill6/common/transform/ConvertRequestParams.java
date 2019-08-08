@@ -1,14 +1,13 @@
 package cn.skill6.common.transform;
 
+import cn.skill6.common.constant.Encode;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import cn.skill6.common.constant.Encode;
 
 /**
  * json和request请求参数直接相互转化
@@ -18,104 +17,104 @@ import cn.skill6.common.constant.Encode;
  * @since 2018年3月13日 下午3:43:05
  */
 public class ConvertRequestParams {
-  /**
-   * 请求参数的字符串形式(如name=husen&pwd=123)转化为map
-   *
-   * @param param request.getQueryString()
-   * @return map
-   */
-  public static Map<String, String> paramsStr2Map(String param) {
-    Map<String, String> map = new HashMap<String, String>(10);
+    /**
+     * 请求参数的字符串形式(如name=husen&pwd=123)转化为map
+     *
+     * @param param request.getQueryString()
+     * @return map
+     */
+    public static Map<String, String> paramsStr2Map(String param) {
+        Map<String, String> map = new HashMap<String, String>(10);
 
-    if (param == null || param.length() == 0) {
-      return map;
-    }
-
-    String[] params = param.split("&");
-    for (int i = 0; i < params.length; i++) {
-      String[] p = params[i].split("=");
-      if (p.length == 2) {
-        map.put(p[0], p[1]);
-      }
-    }
-    return map;
-  }
-
-  /**
-   * map转化为请求参数的字符串形式(如name=husen&pwd=123)
-   *
-   * @param map
-   * @return 字符串
-   */
-  public static String map2ParamsStr(Map<String, Object> map) {
-    if (map == null) {
-      return "";
-    }
-    StringBuffer sb = new StringBuffer();
-    for (Map.Entry<String, Object> entry : map.entrySet()) {
-      sb.append(entry.getKey() + "=" + entry.getValue());
-      sb.append("&");
-    }
-
-    int length = sb.length();
-    char andChar = '&';
-    if (andChar == sb.charAt(length - 1)) {
-      sb.deleteCharAt(length - 1);
-    }
-
-    return sb.toString();
-  }
-
-  /**
-   * map转化为请求参数的字符串形式(如name=husen&pwd=123),并对键值对进行URL编码
-   *
-   * @param map
-   * @throws UnsupportedEncodingException
-   */
-  public static String map2ParamsEncodeStr(Map<String, String> map)
-      throws UnsupportedEncodingException {
-    if (map == null) {
-      return "";
-    }
-
-    StringBuffer sb = new StringBuffer();
-    String key = null, value = null;
-    for (Map.Entry<String, String> entry : map.entrySet()) {
-      key = URLEncoder.encode(entry.getKey(), Encode.DEFAULT_ENCODE);
-      value = URLEncoder.encode(entry.getValue(), Encode.DEFAULT_ENCODE);
-      sb.append(key + "=" + value);
-      sb.append("&");
-    }
-
-    int length = sb.length();
-    char andChar = '&';
-    if (andChar == sb.charAt(length - 1)) {
-      sb.deleteCharAt(length - 1);
-    }
-
-    return sb.toString();
-  }
-
-  /**
-   * 请求参数转化为map
-   *
-   * @param request
-   */
-  public static Map<String, String> params2Map(HttpServletRequest request) {
-    Map<String, String> map = new HashMap<>(100);
-
-    Enumeration<String> paramNames = request.getParameterNames();
-    while (paramNames.hasMoreElements()) {
-      String paramName = (String) paramNames.nextElement();
-      String[] paramValues = request.getParameterValues(paramName);
-      if (paramValues.length == 1) {
-        String paramValue = paramValues[0];
-        if (paramValue.length() != 0) {
-          map.put(paramName, paramValue);
+        if (param == null || param.length() == 0) {
+            return map;
         }
-      }
+
+        String[] params = param.split("&");
+        for (String s : params) {
+            String[] p = s.split("=");
+            if (p.length == 2) {
+                map.put(p[0], p[1]);
+            }
+        }
+        return map;
     }
 
-    return map;
-  }
+    /**
+     * map转化为请求参数的字符串形式(如name=husen&pwd=123)
+     *
+     * @param map 参数map
+     * @return 字符串
+     */
+    public static String map2ParamsStr(Map<String, Object> map) {
+        if (map == null) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            sb.append(entry.getKey()).append("=").append(entry.getValue());
+            sb.append("&");
+        }
+
+        int length = sb.length();
+        char andChar = '&';
+        if (andChar == sb.charAt(length - 1)) {
+            sb.deleteCharAt(length - 1);
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * map转化为请求参数的字符串形式(如name=husen&pwd=123),并对键值对进行URL编码
+     *
+     * @param map 参数map
+     * @throws UnsupportedEncodingException 不支持异常
+     */
+    public static String map2ParamsEncodeStr(Map<String, String> map)
+            throws UnsupportedEncodingException {
+        if (map == null) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        String key = null, value = null;
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            key = URLEncoder.encode(entry.getKey(), Encode.DEFAULT_ENCODE);
+            value = URLEncoder.encode(entry.getValue(), Encode.DEFAULT_ENCODE);
+            sb.append(key).append("=").append(value);
+            sb.append("&");
+        }
+
+        int length = sb.length();
+        char andChar = '&';
+        if (andChar == sb.charAt(length - 1)) {
+            sb.deleteCharAt(length - 1);
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * 请求参数转化为map
+     *
+     * @param request HTTP请求
+     */
+    public static Map<String, String> params2Map(HttpServletRequest request) {
+        Map<String, String> map = new HashMap<>(100);
+
+        Enumeration<String> paramNames = request.getParameterNames();
+        while (paramNames.hasMoreElements()) {
+            String paramName = (String) paramNames.nextElement();
+            String[] paramValues = request.getParameterValues(paramName);
+            if (paramValues.length == 1) {
+                String paramValue = paramValues[0];
+                if (paramValue.length() != 0) {
+                    map.put(paramName, paramValue);
+                }
+            }
+        }
+
+        return map;
+    }
 }

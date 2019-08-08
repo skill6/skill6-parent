@@ -10,21 +10,33 @@ package cn.skill6.common.constant;
  */
 public class RedisCachePrefix {
 
-  /** mybatis缓存 */
-  public static final String MYBATIS_REDIS_CACHE = "mybatis@redis_cache:";
+    /**
+     * mybatis缓存
+     */
+    public static final String MYBATIS_REDIS_CACHE = "mybatis@redis_cache:";
 
-  /** 注册验证码缓存 */
-  public static final String REGISTER_REDIS_CODE = "register@auth_code:";
+    /**
+     * 注册验证码缓存
+     */
+    public static final String REGISTER_REDIS_CODE = "register@auth_code:";
 
-  /** shiro缓存 */
-  public static final String SHIRO_REDIS_CACHE = "shiro@redis_cache:";
+    /**
+     * shiro缓存
+     */
+    public static final String SHIRO_REDIS_CACHE = "shiro@redis_cache:";
 
-  /** 客户配置shiro会话缓存 */
-  public static final String SHIRO_REDIS_SESSION = "shiro@session@cache:";
+    /**
+     * 客户配置shiro会话缓存
+     */
+    public static final String SHIRO_REDIS_SESSION = "shiro@session@cache:";
 
-  /** 登录失败次数限制缓存 */
-  public static final String SHIRO_LOGIN_FAIL_COUNT = "shiro@login@fail_count:";
+    /**
+     * 登录失败次数限制缓存
+     */
+    public static final String SHIRO_LOGIN_FAIL_COUNT = "shiro@login@fail_count:";
 
-  /** shiro 登录失败最大次数 */
-  public static final int SHIRO_LOGIN_FAIL_MAX_COUNT = 5;
+    /**
+     * shiro 登录失败最大次数
+     */
+    public static final int SHIRO_LOGIN_FAIL_MAX_COUNT = 5;
 }

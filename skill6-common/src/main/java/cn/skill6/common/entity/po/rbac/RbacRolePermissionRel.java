@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RbacRolePermissionRel {
 
-  private Long roleId;
+    private Long roleId;
 
-  private Long permissionId;
+    private Long permissionId;
 }

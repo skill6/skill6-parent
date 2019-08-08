@@ -1,14 +1,13 @@
 package cn.skill6.common.mybatis;
 
+import cn.skill6.common.entity.enums.intf.BaseEnum;
+import org.apache.ibatis.type.BaseTypeHandler;
+import org.apache.ibatis.type.JdbcType;
+
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.apache.ibatis.type.BaseTypeHandler;
-import org.apache.ibatis.type.JdbcType;
-
-import cn.skill6.common.entity.enums.intf.BaseEnum;
 
 /**
  * 实现Mybatis中状态枚举转换成状态码的通用处理类（数据库字段和Java枚举）
@@ -17,90 +16,89 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * @version 1.3
  * @since 2018年8月16日 上午12:01:07
  */
-@SuppressWarnings("rawtypes")
 public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseTypeHandler<E> {
-  private Class<E> type;
-  private E[] enums;
+    private Class<E> type;
+    private E[] enums;
 
-  /**
-   * 设置配置文件设置的转换类以及枚举类内容，供其他方法更便捷高效的实现
-   *
-   * @param type 配置文件中设置的转换类
-   */
-  public GeneralStateFieldHandler(Class<E> type) {
-    if (type == null) {
-      throw new IllegalArgumentException("Type argument cannot be null");
+    /**
+     * 设置配置文件设置的转换类以及枚举类内容，供其他方法更便捷高效的实现
+     *
+     * @param type 配置文件中设置的转换类
+     */
+    public GeneralStateFieldHandler(Class<E> type) {
+        if (type == null) {
+            throw new IllegalArgumentException("Type argument cannot be null");
+        }
+
+        this.type = type;
+        this.enums = type.getEnumConstants();
+
+        if (this.enums == null) {
+            throw new IllegalArgumentException(
+                    type.getSimpleName() + " does not represent an enum type.");
+        }
     }
 
-    this.type = type;
-    this.enums = type.getEnumConstants();
-
-    if (this.enums == null) {
-      throw new IllegalArgumentException(
-          type.getSimpleName() + " does not represent an enum type.");
-    }
-  }
-
-  @Override
-  public void setNonNullParameter(PreparedStatement ps, int i, E parameter, JdbcType jdbcType)
-      throws SQLException {
-    // baseTypeHandler已经帮我们做了parameter的null判断
-    if (jdbcType == null) {
-      ps.setObject(i, parameter.getStateCode());
-    } else {
-      ps.setObject(i, parameter.getStateCode(), jdbcType.TYPE_CODE);
-    }
-  }
-
-  @Override
-  public E getNullableResult(ResultSet rs, String columnName) throws SQLException {
-    // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
-    String stateCode = rs.getString(columnName);
-
-    if (rs.wasNull()) {
-      return null;
+    @Override
+    public void setNonNullParameter(PreparedStatement ps, int i, E parameter, JdbcType jdbcType)
+            throws SQLException {
+        // baseTypeHandler已经帮我们做了parameter的null判断
+        if (jdbcType == null) {
+            ps.setObject(i, parameter.getEnumName());
+        } else {
+            ps.setObject(i, parameter.getEnumName(), jdbcType.TYPE_CODE);
+        }
     }
 
-    return locateEnumStatus(stateCode);
-  }
+    @Override
+    public E getNullableResult(ResultSet rs, String columnName) throws SQLException {
+        // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
+        String enumName = rs.getString(columnName);
 
-  @Override
-  public E getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-    // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
-    String stateCode = rs.getString(columnIndex);
+        if (rs.wasNull()) {
+            return null;
+        }
 
-    if (rs.wasNull()) {
-      return null;
+        return locateEnumStatus(enumName);
     }
 
-    return locateEnumStatus(stateCode);
-  }
+    @Override
+    public E getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+        // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
+        String enumName = rs.getString(columnIndex);
 
-  @Override
-  public E getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-    // 根据数据库存储类型决定获取类型，本例子中数据库中存放INT类型
-    String stateCode = cs.getString(columnIndex);
+        if (rs.wasNull()) {
+            return null;
+        }
 
-    if (cs.wasNull()) {
-      return null;
+        return locateEnumStatus(enumName);
     }
 
-    return locateEnumStatus(stateCode);
-  }
+    @Override
+    public E getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+        // 根据数据库存储类型决定获取类型，本例子中数据库中存放INT类型
+        String enumName = cs.getString(columnIndex);
 
-  /**
-   * 根据数据库中的code值,定位EnumStatus子类
-   *
-   * @param stateCode 数据库中存储的自定义code属性
-   * @return code对应的枚举类
-   */
-  private E locateEnumStatus(String stateCode) {
-    for (E e : enums) {
-      if (e.getStateCode().equals(stateCode)) {
-        return e;
-      }
+        if (cs.wasNull()) {
+            return null;
+        }
+
+        return locateEnumStatus(enumName);
     }
 
-    throw new IllegalArgumentException("未知的枚举类型：" + stateCode + ",请核对" + type.getSimpleName());
-  }
+    /**
+     * 根据数据库中的code值,定位EnumStatus子类
+     *
+     * @param enumName 数据库中存储的自定义code属性
+     * @return code对应的枚举类
+     */
+    private E locateEnumStatus(String enumName) {
+        for (E e : enums) {
+            if (e.getEnumName().equals(enumName)) {
+                return e;
+            }
+        }
+
+        throw new IllegalArgumentException("未知的枚举类型：" + enumName + ",请核对" + type.getSimpleName());
+    }
 }

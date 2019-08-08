@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.visit;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 访问记录实体类
@@ -18,15 +18,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VisitRecord {
 
-  private Long visitId;
+    private Long visitId;
 
-  private Long userId;
+    private Long userId;
 
-  private Long visitContentId;
+    private Long visitContentId;
 
-  private String visitContentType;
+    private String visitContentType;
 
-  private Date visitStartTime;
+    private Date visitStartTime;
 
-  private Date visitEndTime;
+    private Date visitEndTime;
 }

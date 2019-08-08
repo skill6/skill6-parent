@@ -1,10 +1,10 @@
 package cn.skill6.common.entity.po.feature;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * 讨论区实体类
@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FeatureDiscussArea {
 
-  private Long discussId;
+    private Long discussId;
 
-  private Long userId;
+    private Long userId;
 
-  private Long discussBelongId;
+    private Long discussBelongId;
 
-  private Long discussParentId;
+    private Long discussParentId;
 
-  private Date discussCreateTime;
+    private Date discussCreateTime;
 
-  private Boolean discussValid;
+    private Boolean discussValid;
 
-  private String discussContent;
+    private String discussContent;
 }

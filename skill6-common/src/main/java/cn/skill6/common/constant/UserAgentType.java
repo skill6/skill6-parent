@@ -1,6 +1,6 @@
 package cn.skill6.common.constant;
 
-import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 用户访问设备类型
@@ -10,12 +10,15 @@ import lombok.Getter;
  * @since 2018年12月30日 下午11:32:34
  */
 public enum UserAgentType {
-  PC("pc"),
-  MOBILE("mobile");
+    PC,
+    MOBILE;
 
-  @Getter private String userAgent;
+    public String getEnumName() {
+        return StringUtils.lowerCase(name());
+    }
 
-  private UserAgentType(String userAgent) {
-    this.userAgent = userAgent;
-  }
+    public static UserAgentType getEnum(String enumName) {
+        return valueOf(StringUtils.upperCase(enumName));
+    }
+
 }
