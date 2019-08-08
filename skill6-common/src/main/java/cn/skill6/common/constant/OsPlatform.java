@@ -42,8 +42,10 @@ public enum OsPlatform {
      */
     public static OsPlatform getCurrentOs() {
         String currOsName = System.getProperty("os.name");
+        System.out.println("currOsName:" + currOsName);
 
-        return Arrays.stream(OsPlatform.values()).filter(osPlatform -> StringUtils.equals(osPlatform.getOsName(),
-                currOsName)).findFirst().orElseThrow(ParamsException::new);
+        return Arrays.stream(OsPlatform.values()).filter(osPlatform -> StringUtils.contains(currOsName,
+                osPlatform.getOsName()
+        )).findFirst().orElseThrow(ParamsException::new);
     }
 }

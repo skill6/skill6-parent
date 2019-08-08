@@ -24,7 +24,7 @@ public enum FileType implements BaseEnum<Enum<FileType>> {
 
     @Override
     public String getEnumName() {
-        return null;
+        return StringUtils.lowerCase(name());
     }
 
     public static FileType getEnum(String enumName) {

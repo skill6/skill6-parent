@@ -53,52 +53,52 @@ public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseType
     @Override
     public E getNullableResult(ResultSet rs, String columnName) throws SQLException {
         // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
-        String stateCode = rs.getString(columnName);
+        String enumName = rs.getString(columnName);
 
         if (rs.wasNull()) {
             return null;
         }
 
-        return locateEnumStatus(stateCode);
+        return locateEnumStatus(enumName);
     }
 
     @Override
     public E getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
-        String stateCode = rs.getString(columnIndex);
+        String enumName = rs.getString(columnIndex);
 
         if (rs.wasNull()) {
             return null;
         }
 
-        return locateEnumStatus(stateCode);
+        return locateEnumStatus(enumName);
     }
 
     @Override
     public E getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         // 根据数据库存储类型决定获取类型，本例子中数据库中存放INT类型
-        String stateCode = cs.getString(columnIndex);
+        String enumName = cs.getString(columnIndex);
 
         if (cs.wasNull()) {
             return null;
         }
 
-        return locateEnumStatus(stateCode);
+        return locateEnumStatus(enumName);
     }
 
     /**
      * 根据数据库中的code值,定位EnumStatus子类
      *
-     * @param stateCode 数据库中存储的自定义code属性
+     * @param enumName 数据库中存储的自定义code属性
      * @return code对应的枚举类
      */
-    private E locateEnumStatus(String stateCode) {
+    private E locateEnumStatus(String enumName) {
         for (E e : enums) {
-            if (e.getEnumName().equals(stateCode)) {
+            if (e.getEnumName().equals(enumName)) {
                 return e;
             }
         }
 
-        throw new IllegalArgumentException("未知的枚举类型：" + stateCode + ",请核对" + type.getSimpleName());
+        throw new IllegalArgumentException("未知的枚举类型：" + enumName + ",请核对" + type.getSimpleName());
     }
 }

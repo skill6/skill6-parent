@@ -3,6 +3,7 @@ package cn.skill6.common.entity.enums;
 import cn.skill6.common.entity.enums.intf.BaseEnum;
 import cn.skill6.common.exception.general.ParamsException;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -27,16 +28,17 @@ public enum SortType implements BaseEnum<Enum<SortType>> {
      */
     DESCENDING("DESC");
 
+    @Getter
     private String value;
 
     @Override
     public String getEnumName() {
-        return StringUtils.lowerCase(name());
+        return value;
     }
 
-    public static SortType getEnum(String enumName) {
-        return Arrays.stream(SortType.values()).filter(sortType -> StringUtils.equals(sortType.getEnumName(),
-                enumName)).findFirst().orElseThrow(ParamsException::new);
+    public static SortType getEnum(String value) {
+        return Arrays.stream(SortType.values()).filter(sortType -> StringUtils.equals(sortType.getEnumName(), value)).
+                findFirst().orElseThrow(ParamsException::new);
     }
 
 }
