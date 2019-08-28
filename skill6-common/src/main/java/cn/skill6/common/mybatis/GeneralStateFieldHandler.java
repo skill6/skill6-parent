@@ -16,9 +16,12 @@ import java.sql.SQLException;
  * @version 1.3
  * @since 2018年8月16日 上午12:01:07
  */
-public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseTypeHandler<E> {
+public class GeneralStateFieldHandler<E extends BaseEnum> extends BaseTypeHandler<E> {
     private Class<E> type;
     private E[] enums;
+
+    public GeneralStateFieldHandler() {
+    }
 
     /**
      * 设置配置文件设置的转换类以及枚举类内容，供其他方法更便捷高效的实现
