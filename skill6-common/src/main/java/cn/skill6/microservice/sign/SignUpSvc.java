@@ -1,5 +1,7 @@
 package cn.skill6.microservice.sign;
 
+import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+
 /**
  * 注册服务
  *
@@ -8,4 +10,7 @@ package cn.skill6.microservice.sign;
  * @since 2018年11月23日 下午10:22:59
  */
 public interface SignUpSvc {
+
+    String createUser(UserPrivacyInfo userPrivacyInfo);
+
 }

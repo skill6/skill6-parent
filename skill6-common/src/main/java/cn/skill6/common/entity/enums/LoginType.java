@@ -20,7 +20,6 @@ public enum LoginType implements BaseEnum<Enum<LoginType>> {
      */
     USERNAME("/login/username"),
 
-
     /**
      * "邮箱登录
      */

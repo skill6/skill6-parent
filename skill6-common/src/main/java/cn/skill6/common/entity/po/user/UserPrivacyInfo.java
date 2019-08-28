@@ -3,7 +3,6 @@ package cn.skill6.common.entity.po.user;
 import cn.skill6.common.entity.enums.UserState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 用户隐私信息实体类
@@ -13,7 +12,6 @@ import lombok.NoArgsConstructor;
  * @since 2018年8月15日 下午11:37:40
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class UserPrivacyInfo {
 
@@ -34,4 +32,18 @@ public class UserPrivacyInfo {
     private String userType;
 
     private UserState userState;
+
+    public UserPrivacyInfo() {
+    }
+
+    public UserPrivacyInfo(Long userId, String userName, String userEmail, String userPhone, String userLoginFrom, String userPassword, String userPwdSalt, String userType) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
+        this.userLoginFrom = userLoginFrom;
+        this.userPassword = userPassword;
+        this.userPwdSalt = userPwdSalt;
+        this.userType = userType;
+    }
 }
