@@ -1,5 +1,6 @@
 package cn.skill6.common.entity.po.other;
 
+import cn.skill6.common.entity.enums.CategoryType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ public class CategoryInfo {
 
     private String categoryName;
 
-    private String categoryType;
+    private CategoryType categoryType;
 
     private Date categoryCreateTime;
 

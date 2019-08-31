@@ -1,5 +1,6 @@
 package cn.skill6.common.entity.po.user;
 
+import cn.skill6.common.entity.enums.UserState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -28,7 +29,7 @@ public class UserInfo {
 
     private String userType;
 
-    private String userState;
+    private UserState userState;
 
     public UserInfo() {
     }
