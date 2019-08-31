@@ -9,25 +9,33 @@ import java.util.Date;
  * 文件下载实体类
  *
  * @author 何明胜
- * @version 1.4
  * @since 2018年8月15日 下午11:33:07
  */
 @Data
 public class StoreFile {
-
     private Long fileId;
 
     private String fileName;
+
+    private String fileFullName;
 
     private String fileUrl;
 
     private Date fileUploadTime;
 
+    private String fileLabel;
+
     private FileType fileType;
 
     private String fileHashCode;
 
+    private Integer fileVisitCount;
+
+    private Integer fileCollectCount;
+
     private Integer fileDownloadCount;
+
+    private String fileDesc;
 
     public StoreFile() {
     }

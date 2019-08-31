@@ -10,17 +10,13 @@ import java.util.Date;
  * 文章历史版本实体类
  *
  * @author 何明胜
- * @version 1.4
  * @since 2018年8月28日 上午1:25:48
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleModifyRecord {
-
     private Long articleId;
-
-    private Date articleUpdateTime;
 
     private Long categoryId;
 
@@ -36,6 +32,8 @@ public class ArticleModifyRecord {
 
     private Date articleCreateTime;
 
+    private Date articleUpdateTime;
+
     private Boolean artilcePlaceTop;
 
     private Integer articleTopPriority;
@@ -46,5 +44,5 @@ public class ArticleModifyRecord {
 
     private String articleMdContent;
 
-    private String articleAttachUrl;
+    private String articleAttachIds;
 }

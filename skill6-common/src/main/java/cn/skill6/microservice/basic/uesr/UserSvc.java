@@ -1,6 +1,6 @@
 package cn.skill6.microservice.basic.uesr;
 
-import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 
 /**
  * 用户隐私信息服务接口
@@ -17,5 +17,5 @@ public interface UserSvc {
      * @param userPrivacyInfo 用户信息
      * @return 用户id
      */
-    Long quickCreateUser(UserPrivacyInfo userPrivacyInfo);
+    Long quickCreateUser(UserInfo userPrivacyInfo);
 }
