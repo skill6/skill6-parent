@@ -40,36 +40,19 @@ public class StoreFile {
     public StoreFile() {
     }
 
-    public StoreFile(
-            Long fileId,
-            String fileName,
-            String fileUrl,
-            Date fileUploadTime,
-            String fileHashCode,
-            Integer fileDownloadCount) {
+    public StoreFile(Long fileId, String fileName, String fileFullName, String fileUrl, Date fileUploadTime,
+                     String fileLabel, String fileHashCode, Integer fileVisitCount, Integer fileCollectCount,
+                     Integer fileDownloadCount, String fileDesc) {
         this.fileId = fileId;
         this.fileName = fileName;
+        this.fileFullName = fileFullName;
         this.fileUrl = fileUrl;
         this.fileUploadTime = fileUploadTime;
+        this.fileLabel = fileLabel;
         this.fileHashCode = fileHashCode;
+        this.fileVisitCount = fileVisitCount;
+        this.fileCollectCount = fileCollectCount;
         this.fileDownloadCount = fileDownloadCount;
-    }
-
-    public StoreFile(
-            Long fileId,
-            String fileName,
-            String fileUrl,
-            Date fileUploadTime,
-            FileType fileType,
-            String fileHashCode,
-            Integer fileDownloadCount) {
-        super();
-        this.fileId = fileId;
-        this.fileName = fileName;
-        this.fileUrl = fileUrl;
-        this.fileUploadTime = fileUploadTime;
-        this.fileType = fileType;
-        this.fileHashCode = fileHashCode;
-        this.fileDownloadCount = fileDownloadCount;
+        this.fileDesc = fileDesc;
     }
 }
