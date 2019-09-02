@@ -63,8 +63,8 @@ public class ArticleInfoTo extends ArticleInfo implements BaseTemplate {
     }
 
     @Override
-    public Boolean getArtilcePlaceTop() {
-        return super.getArtilcePlaceTop();
+    public Boolean getArticlePlaceTop() {
+        return super.getArticlePlaceTop();
     }
 
     @Override
