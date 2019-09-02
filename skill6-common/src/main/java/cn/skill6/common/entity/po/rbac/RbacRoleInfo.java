@@ -10,14 +10,12 @@ import java.util.Date;
  * RBAC角色信息
  *
  * @author 何明胜
- * @version 1.3
  * @since 2018年9月23日 下午5:52:52
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RbacRoleInfo {
-
     private Long roleId;
 
     private String roleName;
