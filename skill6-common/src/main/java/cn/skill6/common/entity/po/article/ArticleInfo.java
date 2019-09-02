@@ -40,7 +40,7 @@ public class ArticleInfo extends PaginationAndSort implements Serializable {
 
     private Date articleUpdateTime;
 
-    private Boolean artilcePlaceTop;
+    private Boolean articlePlaceTop;
 
     private Integer articleTopPriority;
 
