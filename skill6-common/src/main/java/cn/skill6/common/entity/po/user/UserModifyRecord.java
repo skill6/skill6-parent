@@ -16,15 +16,17 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserModifyRecord {
+    private Long userModifyId;
+
     private Long userId;
 
     private String userModifyType;
-
-    private Date userModifyTime;
 
     private String userModifyBefore;
 
     private String userModifyAfter;
 
     private Boolean userModifyResult;
+
+    private Date userModifyTime;
 }

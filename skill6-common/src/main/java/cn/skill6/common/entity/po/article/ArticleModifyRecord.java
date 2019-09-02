@@ -16,6 +16,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleModifyRecord {
+    private Long articleModifyId;
+
     private Long articleId;
 
     private Long categoryId;
@@ -34,7 +36,7 @@ public class ArticleModifyRecord {
 
     private Date articleUpdateTime;
 
-    private Boolean artilcePlaceTop;
+    private Boolean articlePlaceTop;
 
     private Integer articleTopPriority;
 
