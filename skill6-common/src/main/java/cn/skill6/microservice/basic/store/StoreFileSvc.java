@@ -24,12 +24,11 @@ public interface StoreFileSvc {
      * @throws IOException
      */
     public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
-            throws IOException, FileUploadException;
+        throws IOException, FileUploadException;
 
     /**
      * @param fileId
      * @param response
-     * @throws IOException
      */
-    public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException;
+    public void downloadFileById(Long fileId, HttpServletResponse response);
 }
