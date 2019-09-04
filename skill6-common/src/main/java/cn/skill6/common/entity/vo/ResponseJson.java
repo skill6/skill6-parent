@@ -8,7 +8,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * RESTful 返回json
+ * Restful 返回json
  *
  * @author 何明胜
  * @version 1.2

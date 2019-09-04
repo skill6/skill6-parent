@@ -1,4 +1,4 @@
-package cn.skill6.microservice.basic;
+package cn.skill6.website.basic;
 
 import cn.skill6.common.entity.po.other.CategoryInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
@@ -7,24 +7,23 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * 信息目录服务接口
  *
  * @author 何明胜
- * @version 1.0
  * @since 2018年10月5日 下午4:10:03
  */
-public interface CategoryInfoSvc {
+public interface CategorySvc {
     /**
      * 增加目录信息
      *
-     * @param featureCategoryInfo
-     * @param categoryType
+     * @param categoryInfo 目录内容
+     * @param categoryType 目录分类
      * @return 操作结果
      */
-    public ResponseJson addCategoryInfo(CategoryInfo featureCategoryInfo, int categoryType);
+    ResponseJson addCategory(CategoryInfo categoryInfo, int categoryType);
 
     /**
      * 增加目录信息
      *
-     * @param featureCategoryInfo
+     * @param categoryInfo 目录内容
      * @return 操作结果
      */
-    ResponseJson addCategoryInfo(CategoryInfo featureCategoryInfo);
+    ResponseJson addCategory(CategoryInfo categoryInfo);
 }
