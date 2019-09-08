@@ -1,9 +1,7 @@
 package cn.skill6.common.entity.po.thirdparty;
 
-import cn.skill6.common.entity.po.abst.PaginationAndSort;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -17,8 +15,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class ThirdpartyAuth extends PaginationAndSort {
+public class ThirdpartyAuth {
     private Long thirdpartyId;
 
     private Long userId;

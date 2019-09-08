@@ -47,5 +47,5 @@ public interface ArticleSvc {
     /**
      * @return 所有文章
      */
-    String getAllArticles();
+    ResponseJson getAllArticles();
 }

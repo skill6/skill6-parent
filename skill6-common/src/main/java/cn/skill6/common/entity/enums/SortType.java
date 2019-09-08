@@ -12,7 +12,6 @@ import java.util.Arrays;
  * 排序枚举
  *
  * @author 何明胜
- * @version 1.1
  * @since 2018年9月21日 下午10:34:15
  */
 @AllArgsConstructor
@@ -40,5 +39,4 @@ public enum SortType implements BaseEnum<Enum<SortType>> {
         return Arrays.stream(SortType.values()).filter(sortType -> StringUtils.equals(sortType.getEnumName(), value)).
                 findFirst().orElseThrow(ParamsException::new);
     }
-
 }
