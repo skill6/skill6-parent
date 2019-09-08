@@ -11,7 +11,6 @@ import java.io.Serializable;
  * Restful 返回json
  *
  * @author 何明胜
- * @version 1.2
  * @since 2018年3月21日 下午3:52:46
  */
 @Data
@@ -20,10 +19,7 @@ import java.io.Serializable;
 public class ResponseJson implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 不使用封装,默认为false
-     */
-    private Boolean success;
+    private Boolean success = true;
 
     private Object message;
 
@@ -33,10 +29,14 @@ public class ResponseJson implements Serializable {
     /**
      * 只有结果
      *
-     * @param success
+     * @param success 结果
      */
     public ResponseJson(Boolean success) {
         super();
         this.success = success;
+    }
+
+    public ResponseJson(Object message) {
+        this.message = message;
     }
 }

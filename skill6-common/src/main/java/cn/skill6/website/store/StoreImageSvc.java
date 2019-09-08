@@ -1,11 +1,9 @@
 package cn.skill6.website.store;
 
 import cn.skill6.common.entity.vo.ResponseJson;
-import org.apache.commons.fileupload.FileUploadException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * 图片存储接口
@@ -19,10 +17,8 @@ public interface StoreImageSvc {
      *
      * @param request Http请求
      * @return 上传结果
-     * @throws FileUploadException 文件上传异常
-     * @throws IOException         流异常
      */
-    ResponseJson uploadImage(HttpServletRequest request) throws IOException, FileUploadException;
+    ResponseJson uploadImage(HttpServletRequest request);
 
     /**
      * 下载图片

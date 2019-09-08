@@ -1,12 +1,9 @@
 package cn.skill6.common.entity.po.article;
 
-import cn.skill6.common.entity.po.abst.PaginationAndSort;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -18,10 +15,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class ArticleInfo extends PaginationAndSort implements Serializable {
-    private static final long serialVersionUID = 1870286929298864677L;
-
+public class ArticleInfo {
     private Long articleId;
 
     private Long categoryId;
