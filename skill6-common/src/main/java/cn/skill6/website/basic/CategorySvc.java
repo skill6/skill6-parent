@@ -17,7 +17,7 @@ public interface CategorySvc {
      * @param categoryType 目录分类
      * @return 操作结果
      */
-    ResponseJson addCategory(CategoryInfo categoryInfo, int categoryType);
+    ResponseJson addCategory(CategoryInfo categoryInfo, String categoryType);
 
     /**
      * 增加目录信息
