@@ -1,8 +1,11 @@
 package cn.skill6.website.article;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
+
+import java.util.List;
 
 /**
  * 微服务接口
@@ -17,7 +20,7 @@ public interface ArticleSvc {
      * @param articleInfo 文章信息
      * @return 添加结果
      */
-    ResponseJson addArticle(ArticleInfo articleInfo);
+    long addArticle(ArticleInfo articleInfo);
 
     /**
      * 根据id删除文章
@@ -25,7 +28,7 @@ public interface ArticleSvc {
      * @param articleId 文章ID
      * @return 删除结果
      */
-    ResponseJson deleteArticleById(Long articleId);
+    int deleteArticleById(Long articleId);
 
     /**
      * 根据id修改文章
@@ -42,10 +45,19 @@ public interface ArticleSvc {
      * @return 查询结果
      * @throws Skill6Exception 基本异常
      */
-    ResponseJson getArticleById(Long articleId);
+    ArticleInfo getArticleById(Long articleId);
 
     /**
      * @return 所有文章
      */
-    ResponseJson getAllArticles();
+    List<ArticleInfo> getAllArticles();
+
+    /**
+     * 分页查询文章
+     *
+     * @param pageSize 分页大小
+     * @param pageNum  页码
+     * @return 查询结果
+     */
+    public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum);
 }

@@ -1,6 +1,9 @@
 package cn.skill6.website.home;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
+
+import java.util.List;
 
 /**
  * top n 接口接口定义
@@ -12,15 +15,15 @@ public interface TopNSvc {
     /**
      * @return top n 活跃用户列表
      */
-    ResponseJson getActiveUsers();
+    List<UserInfo> getActiveUsers();
 
     /**
      * @return top n 访问量用户列表
      */
-    ResponseJson getTrafficUsers();
+    List<UserInfo> getTrafficUsers();
 
     /**
      * @return top n 最新发表文章列表
      */
-    ResponseJson getPublishArticles();
+    List<ArticleInfo> getPublishArticles();
 }

@@ -1,6 +1,8 @@
 package cn.skill6.website.video;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.video.VideoInfo;
+
+import java.util.List;
 
 /**
  * 视频接口定义
@@ -9,7 +11,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * @since 2019-09-08 21:54
  */
 public interface VideoSvc {
-    ResponseJson getVideosByPage(int pageSize, int pageNum);
+    List<VideoInfo> getVideosByPage(int pageSize, int pageNum);
 
-    ResponseJson getVideoById(Long videoId);
+    VideoInfo getVideoById(Long videoId);
 }

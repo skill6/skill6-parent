@@ -1,6 +1,6 @@
 package cn.skill6.website.home;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.visit.VisitStatistics;
 
 /**
  * 统计接口定义
@@ -12,10 +12,10 @@ public interface StatisticsSvc {
     /**
      * @return 访问统计
      */
-    ResponseJson getStatisticsVisit();
+    VisitStatistics getStatisticsVisit();
 
     /**
      * @return 在线统计
      */
-    ResponseJson getStatisticsOnline();
+    int getStatisticsOnline();
 }
