@@ -1,6 +1,9 @@
 package cn.skill6.website.home;
 
+import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
+
+import java.util.List;
 
 /**
  * 首页推荐接口定义
@@ -32,5 +35,5 @@ public interface RecommendSvc {
     /**
      * @return 推荐文章
      */
-    ResponseJson getRecommendArticle();
+    List<ArticleInfo> getRecommendArticle();
 }

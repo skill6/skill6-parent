@@ -1,6 +1,8 @@
 package cn.skill6.website.infoflow;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.article.ArticleInfo;
+
+import java.util.List;
 
 /**
  * 信息流
@@ -9,10 +11,10 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * @since 2019-09-08 21:43
  */
 public interface InfoFlowSvc {
-    ResponseJson getLatestUpdate();
+    List<ArticleInfo> getLatestUpdate();
 
-    ResponseJson getMostBrowse();
+    List<ArticleInfo> getMostBrowse();
 
-    ResponseJson getMostReply();
+    List<ArticleInfo> getMostReply();
 }
 

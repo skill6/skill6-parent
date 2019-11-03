@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.io.Serializable;
+import lombok.NoArgsConstructor;
 
 /**
  * Restful 返回json
@@ -14,29 +13,14 @@ import java.io.Serializable;
  * @since 2018年3月21日 下午3:52:46
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class ResponseJson implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private Boolean success = true;
+public class ResponseJson {
 
     private Object message;
 
-    public ResponseJson() {
-    }
-
-    /**
-     * 只有结果
-     *
-     * @param success 结果
-     */
-    public ResponseJson(Boolean success) {
-        super();
-        this.success = success;
-    }
-
-    public ResponseJson(Object message) {
-        this.message = message;
+    public static ResponseJson build(Object message) {
+        return new ResponseJson(message);
     }
 }

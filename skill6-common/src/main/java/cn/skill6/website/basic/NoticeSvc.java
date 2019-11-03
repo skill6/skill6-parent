@@ -1,6 +1,8 @@
 package cn.skill6.website.basic;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.other.Notice;
+
+import java.util.List;
 
 /**
  * 通知接口定义
@@ -14,5 +16,13 @@ public interface NoticeSvc {
      *
      * @return 查询结果
      */
-    ResponseJson getNotice();
+    Notice getNotice();
+
+    /**
+     * 查询最新发布的通知
+     *
+     * @param topn 查询的数量
+     * @return 返回最近的n条通知
+     */
+    List<Notice> getLatestNotice(int topn);
 }

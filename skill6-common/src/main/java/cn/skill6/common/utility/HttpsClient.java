@@ -1,7 +1,6 @@
 package cn.skill6.common.utility;
 
 import cn.skill6.common.constant.Encode;
-import cn.skill6.common.exception.tools.StackTrace2Str;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -62,7 +61,7 @@ public final class HttpsClient {
             try {
                 paramStr = EntityUtils.toString(urlEncodedFormEntity);
             } catch (ParseException | IOException e) {
-                log.error(StackTrace2Str.exceptionStackTrace2Str("参数转换失败", e));
+                log.error("参数转换失败", e);
             }
 
             if (StringUtils.isEmpty(paramStr)) {
@@ -81,7 +80,7 @@ public final class HttpsClient {
             HttpEntity entity = httpResponse.getEntity();
             response = EntityUtils.toString(entity);
         } catch (IOException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("http请求失败", e));
+            log.error("http请求失败", e);
         }
 
         closeResource(httpResponse, httpClient);
@@ -126,7 +125,7 @@ public final class HttpsClient {
             HttpEntity entity = httpResponse.getEntity();
             response = EntityUtils.toString(entity);
         } catch (ParseException | IOException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("http请求失败", e));
+            log.error("http请求失败", e);
         }
 
         closeResource(httpResponse, httpClient);
@@ -151,7 +150,7 @@ public final class HttpsClient {
         try {
             urlEncodedFormEntity = new UrlEncodedFormEntity(nameValuePairs, Encode.DEFAULT_ENCODE);
         } catch (UnsupportedEncodingException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("构建http参数失败", e));
+            log.error("构建http参数失败", e);
         }
 
         return urlEncodedFormEntity;
@@ -164,10 +163,10 @@ public final class HttpsClient {
      */
     private static RequestConfig requestConfig() {
         return RequestConfig.custom()
-                .setConnectTimeout(35000) // 连接主机服务超时时间
-                .setConnectionRequestTimeout(35000) // 请求超时时间
-                .setSocketTimeout(60000) // 数据读取超时时间
-                .build();
+            .setConnectTimeout(35000) // 连接主机服务超时时间
+            .setConnectionRequestTimeout(35000) // 请求超时时间
+            .setSocketTimeout(60000) // 数据读取超时时间
+            .build();
     }
 
     /**
@@ -181,7 +180,7 @@ public final class HttpsClient {
             try {
                 httpResponse.close();
             } catch (IOException e) {
-                log.warn(StackTrace2Str.exceptionStackTrace2Str("httpResponse 关闭异常", e));
+                log.warn("httpResponse 关闭异常", e);
             }
         }
 
@@ -189,7 +188,7 @@ public final class HttpsClient {
             try {
                 httpClient.close();
             } catch (IOException e) {
-                log.warn(StackTrace2Str.exceptionStackTrace2Str("httpClient 关闭异常", e));
+                log.warn("httpClient 关闭异常", e);
             }
         }
     }

@@ -1,6 +1,7 @@
 package cn.skill6.website.article;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.article.ArticleComment;
+import cn.skill6.common.entity.vo.PageResult;
 
 /**
  * 评论
@@ -16,7 +17,7 @@ public interface CommentSvc {
      * @param pageNum  页码
      * @return 查询结果
      */
-    ResponseJson getCommentsByPage(int pageSize, int pageNum);
+    PageResult<ArticleComment> getCommentsByPage(int pageSize, int pageNum);
 
     /**
      * 根据评论ID获取评论内容
@@ -24,5 +25,13 @@ public interface CommentSvc {
      * @param commentId 评论ID
      * @return 评论内容
      */
-    ResponseJson getCommentById(long commentId);
+    ArticleComment getCommentById(long commentId);
+
+    /**
+     * 增加评论
+     *
+     * @param articleComment 评论内容
+     * @return 评论ID
+     */
+    Long addArticleComment(ArticleComment articleComment);
 }

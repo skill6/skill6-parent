@@ -116,8 +116,7 @@ public final class AesEncrypt {
             byte[] encrypted1 = Base64.getDecoder().decode(dataSource);
             try {
                 byte[] original = cipher.doFinal(encrypted1);
-                String originalString = new String(original, "utf-8");
-                return originalString;
+                return new String(original, "utf-8");
             } catch (Exception e) {
                 log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 

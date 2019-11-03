@@ -1,6 +1,7 @@
 package cn.skill6.website.basic;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.other.VersionInfo;
+import cn.skill6.common.entity.vo.PageResult;
 
 /**
  * 网站版本
@@ -16,5 +17,5 @@ public interface VersionSvc {
      * @param pageNum  页码
      * @return 查询结果
      */
-    ResponseJson getVersionByPage(int pageSize, int pageNum);
+    PageResult<VersionInfo> getVersionByPage(int pageSize, int pageNum);
 }

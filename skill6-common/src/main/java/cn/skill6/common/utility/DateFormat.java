@@ -24,14 +24,13 @@ public class DateFormat {
     /**
      * 根据格式获取时间( yyyy MM dd HH mm ss 等顺序可变 )
      *
-     * @param dateFormat
+     * @param dateFormat 目标时间格式
      */
     public static String formatNowDate(String dateFormat) {
         SimpleDateFormat dateFormater = new SimpleDateFormat(dateFormat);
         Date date = new Date();
-        String formatDate = dateFormater.format(date);
 
-        return formatDate;
+        return dateFormater.format(date);
     }
 
     /**
@@ -46,14 +45,13 @@ public class DateFormat {
     /**
      * 获取只含年月日格式的时间( yyyy MM dd 等顺序可变 )
      *
-     * @param dateFormat
+     * @param dateFormat 目标时间格式
      */
     public static String formatDateYMD(String dateFormat) {
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
-        String dateString = formatter.format(currentTime);
 
-        return dateString;
+        return formatter.format(currentTime);
     }
 
     /**
@@ -63,7 +61,7 @@ public class DateFormat {
         Calendar calendar = Calendar.getInstance();
 
         calendar.setTime(new Date());
-        Long zeroSeconds = calendar.getTime().getTime();
+        long zeroSeconds = calendar.getTime().getTime();
 
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);

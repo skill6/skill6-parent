@@ -26,7 +26,7 @@ public class ReadHtmlFile {
      */
     public static String readHtmlByName(String htmlQualifiedName) {
         BufferedReader br = null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(htmlQualifiedName)));
             String temp = null;

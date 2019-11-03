@@ -12,6 +12,9 @@ import java.io.StringWriter;
  */
 public class StackTrace2Str {
     /**
+     * 获取异常堆栈信息
+     *
+     * @param e 异常信息
      * @return e.printStackTrace()的内容
      */
     public static String exceptionStackTrace2Str(Exception e) {
@@ -23,22 +26,5 @@ public class StackTrace2Str {
         sw.flush();
 
         return sw.toString();
-    }
-
-    /**
-     * 返回 自定义错误信息 + e.printStackTrace()的内容
-     *
-     * @param errorMsg
-     * @param e
-     */
-    public static String exceptionStackTrace2Str(String errorMsg, Exception e) {
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        // 将出错的栈信息输出到printWriter中
-        e.printStackTrace(pw);
-        pw.flush();
-        sw.flush();
-
-        return errorMsg + "\n" + sw.toString();
     }
 }

@@ -29,15 +29,15 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
 
     @Override
     public ModelAndView resolveException(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            Object handler,
-            Exception exception) {
+        HttpServletRequest request,
+        HttpServletResponse response,
+        Object handler,
+        Exception exception) {
         // 未登录异常
         if (exception instanceof UnauthenticatedException) {
             response.setStatus(HttpStatusCode.UNAUTHORIZED);
 
-            log.error(StackTrace2Str.exceptionStackTrace2Str("捕获未登录异常", exception));
+            log.error("捕获未登录异常", exception);
             handleUnauthenticatedException(response);
 
             return null;
@@ -46,7 +46,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
         if (exception instanceof UnauthorizedException || exception instanceof AuthorizationException) {
             response.setStatus(HttpStatusCode.UNAUTHORIZED);
 
-            log.error(StackTrace2Str.exceptionStackTrace2Str("捕获无权限异常", exception));
+            log.error("捕获无权限异常", exception);
             handleUnauthorizedException(response);
 
             return null;
@@ -66,13 +66,13 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
             response.setCharacterEncoding(Encode.DEFAULT_ENCODE);
             PrintWriter writer = response.getWriter();
 
-            ResponseJson responseJson = new ResponseJson(false, "您尚未登录, 请先登录!");
+            ResponseJson responseJson = new ResponseJson("您尚未登录, 请先登录!");
             writer.write(new ObjectMapper().writeValueAsString(responseJson));
 
             writer.flush();
             writer.close();
         } catch (IOException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
+            log.error("异常系统捕获处理时再次异常", e);
         }
     }
 
@@ -87,13 +87,13 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
             response.setCharacterEncoding(Encode.DEFAULT_ENCODE);
             PrintWriter writer = response.getWriter();
 
-            ResponseJson responseJson = new ResponseJson(false, "您没有相应的操作权限!");
+            ResponseJson responseJson = new ResponseJson("您没有相应的操作权限!");
             writer.write(new ObjectMapper().writeValueAsString(responseJson));
 
             writer.flush();
             writer.close();
         } catch (IOException e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
+            log.error("异常系统捕获处理时再次异常", e);
         }
     }
 }
