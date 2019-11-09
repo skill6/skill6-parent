@@ -18,4 +18,6 @@ public interface VersionSvc {
      * @return 查询结果
      */
     PageResult<VersionInfo> getVersionByPage(int pageSize, int pageNum);
+
+    long addVersion(VersionInfo versionInfo);
 }

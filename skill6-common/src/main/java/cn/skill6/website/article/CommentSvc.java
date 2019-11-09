@@ -33,5 +33,5 @@ public interface CommentSvc {
      * @param articleComment 评论内容
      * @return 评论ID
      */
-    Long addArticleComment(ArticleComment articleComment);
+    long addArticleComment(ArticleComment articleComment);
 }

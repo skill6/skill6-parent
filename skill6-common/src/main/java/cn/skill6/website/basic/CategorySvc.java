@@ -15,7 +15,7 @@ public interface CategorySvc {
      * @param categoryInfo 目录内容
      * @return 操作结果
      */
-    Long addCategory(CategoryInfo categoryInfo);
+    long addCategory(CategoryInfo categoryInfo);
 
     /**
      * 增加目录信息
@@ -24,5 +24,5 @@ public interface CategorySvc {
      * @param categoryType 目录分类
      * @return 操作结果
      */
-    Long addCategory(CategoryInfo categoryInfo, String categoryType);
+    long addCategory(CategoryInfo categoryInfo, String categoryType);
 }
