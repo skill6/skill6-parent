@@ -18,7 +18,7 @@ import java.util.Date;
 public class QuestionInfo {
     private Long questionId;
 
-    private Long categoryid;
+    private Long categoryId;
 
     private Long userId;
 

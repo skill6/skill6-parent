@@ -27,5 +27,5 @@ public class CategoryInfo {
 
     private Date categoryUpdateTime;
 
-    private Boolean categoryValid;
+    private boolean categoryValid;
 }

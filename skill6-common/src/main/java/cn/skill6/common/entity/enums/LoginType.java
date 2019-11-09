@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Locale;
+
 /**
  * 登录方式枚举, 设置长度不超过8
  *
@@ -55,10 +57,10 @@ public enum LoginType implements BaseEnum<Enum<LoginType>> {
 
     @Override
     public String getEnumName() {
-        return StringUtils.lowerCase(name());
+        return StringUtils.lowerCase(name(), Locale.SIMPLIFIED_CHINESE);
     }
 
     public static LoginType getEnum(String enumName) {
-        return valueOf(StringUtils.upperCase(enumName));
+        return valueOf(StringUtils.upperCase(enumName, Locale.SIMPLIFIED_CHINESE));
     }
 }

@@ -1,12 +1,10 @@
 package cn.skill6.common.transform;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -21,12 +19,13 @@ import java.util.Map;
  */
 @Slf4j
 public class JacksonUtil {
-    // 驼峰和下划线格式自动转换
+
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     static {
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SnakeCaseStrategy.SNAKE_CASE)
-                .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
+        // 驼峰和下划线格式自动转换
+        // objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SnakeCaseStrategy.SNAKE_CASE)
+        //         .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
 
         // 如果json中有新增的字段并且是实体类类中不存在的，不报错
         objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
