@@ -3,6 +3,8 @@ package cn.skill6.common.entity.enums;
 import cn.skill6.common.entity.enums.intf.BaseEnum;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Locale;
+
 /**
  * 目录类型枚举，如文章、下载等, 长度不超过16
  *
@@ -29,11 +31,11 @@ public enum CategoryType implements BaseEnum<Enum<CategoryType>> {
 
     @Override
     public String getEnumName() {
-        return StringUtils.lowerCase(name());
+        return StringUtils.lowerCase(name(), Locale.SIMPLIFIED_CHINESE);
     }
 
     public static CategoryType getEnum(String enumName) {
-        return valueOf(StringUtils.upperCase(enumName));
+        return valueOf(StringUtils.upperCase(enumName, Locale.SIMPLIFIED_CHINESE));
     }
 
 }

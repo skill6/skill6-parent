@@ -3,6 +3,8 @@ package cn.skill6.common.entity.enums;
 import cn.skill6.common.entity.enums.intf.BaseEnum;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Locale;
+
 /**
  * 状态枚举, 长度不超过16
  *
@@ -29,10 +31,10 @@ public enum UserState implements BaseEnum<Enum<UserState>> {
 
     @Override
     public String getEnumName() {
-        return StringUtils.lowerCase(name());
+        return StringUtils.lowerCase(name(), Locale.SIMPLIFIED_CHINESE);
     }
 
     public static UserState getEnum(String enumName) {
-        return valueOf(StringUtils.upperCase(enumName));
+        return valueOf(StringUtils.upperCase(enumName, Locale.SIMPLIFIED_CHINESE));
     }
 }
