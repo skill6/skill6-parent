@@ -9,14 +9,13 @@ import java.util.List;
  * 通过反射获取实体类的属性、方法等
  *
  * @author 何明胜
- * @version 1.0
  * @since 2018年9月22日 下午11:09:01
  */
 public class ReflectEnity {
     /**
      * 返回当前类的所有属性
      *
-     * @param clazz
+     * @param clazz 源类
      * @return 属性数组
      */
     public static List<Field> getCurrentFields(Class<?> clazz) {
@@ -28,7 +27,7 @@ public class ReflectEnity {
     /**
      * 获取一个类及其父类的所有属性
      *
-     * @param clazz
+     * @param clazz 源类
      * @return 属性数组
      */
     public static List<Field> getAllFields(Class<?> clazz) {

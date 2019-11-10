@@ -1,6 +1,7 @@
 package cn.skill6.common.entity.po.article;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Date;
  * @since 2018年8月15日 下午11:30:31
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleInfo {
