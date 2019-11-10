@@ -13,15 +13,14 @@ import org.springframework.stereotype.Component;
  * 模板操作切面
  *
  * @author 何明胜
- * @version 1.1
  * @since 2018年9月22日 下午12:26:59
  */
 @Aspect
 @Component
-public class TemplateOpertionAdvice extends BaseSpringAspect {
+public class TemplateOperationAdvice extends BaseSpringAspect {
 
     @Override
-    @Pointcut("execution(public * cn.skill6.common.entity.to.*.get*(..))")
+    @Pointcut("execution(public * cn.skill6.common.entity.to.*.*.get*(..))")
     protected void aspectJMethod() {
     }
 
@@ -31,7 +30,7 @@ public class TemplateOpertionAdvice extends BaseSpringAspect {
 
     @Override
     @Around(value = "aspectJMethod()")
-    public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    public String doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = getAimMethodName(joinPoint);
 
         String fieldName = methodName.substring(3);

@@ -18,7 +18,6 @@ import java.util.Map;
  * 与Spring 切面相关的工具
  *
  * @author 何明胜
- * @version 1.2
  * @since 2018年3月4日 下午9:53:11
  */
 public abstract class BaseSpringAspect {
