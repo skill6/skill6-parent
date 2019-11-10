@@ -4,6 +4,7 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.entity.vo.article.ArticleCommentVo;
+import cn.skill6.common.entity.vo.article.ArticleInfoVo;
 import cn.skill6.common.exception.Skill6Exception;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -61,7 +62,7 @@ public interface ArticleSvc {
      * @param pageNum  页码
      * @return 查询结果
      */
-    PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum);
+    PageResult<ArticleInfoVo> getArticlesByPage(int pageSize, int pageNum);
 
     PageResult<ArticleCommentVo> getCommentsByArticleIdWithPage(
         @PathVariable("articleId") long articleId, int pageSize, int pageNum);
