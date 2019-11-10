@@ -1,6 +1,5 @@
 package cn.skill6.common.entity.to.article;
 
-import cn.skill6.common.entity.to.intf.BaseTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
  * @since 2019-11-11 00:34
  */
 @Service
-public class ArticleCommentTo implements BaseTemplate {
+public class ArticleCommentTo {
     public String getCommentId() {
         return null;
     }
@@ -41,10 +40,5 @@ public class ArticleCommentTo implements BaseTemplate {
 
     public String getCommentContent() {
         return null;
-    }
-
-    @Override
-    public boolean judgeFieldIsExist(String aimFieldName) {
-        return judgeFieldIsExist(this.getClass(), aimFieldName);
     }
 }

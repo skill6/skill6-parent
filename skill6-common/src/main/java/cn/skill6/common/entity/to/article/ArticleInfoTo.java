@@ -1,6 +1,5 @@
 package cn.skill6.common.entity.to.article;
 
-import cn.skill6.common.entity.to.intf.BaseTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
  * @since 2018年9月22日 上午11:55:06
  */
 @Service
-public class ArticleInfoTo implements BaseTemplate {
+public class ArticleInfoTo {
 
     public String getArticleUpdateTime() {
         return null;
@@ -74,9 +73,5 @@ public class ArticleInfoTo implements BaseTemplate {
 
     public String getArticleAttachIds() {
         return null;
-    }
-
-    public boolean judgeFieldIsExist(String aimFieldName) {
-        return judgeFieldIsExist(this.getClass(), aimFieldName);
     }
 }
