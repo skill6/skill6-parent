@@ -1,6 +1,7 @@
 package cn.skill6.website.article;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
+import cn.skill6.common.entity.po.article.ArticleCommentReply;
 import cn.skill6.common.entity.vo.PageResult;
 
 /**
@@ -34,4 +35,6 @@ public interface CommentSvc {
      * @return 评论ID
      */
     long addArticleComment(ArticleComment articleComment);
+
+    long addArticleCommentReply(ArticleCommentReply articleCommentReply);
 }
